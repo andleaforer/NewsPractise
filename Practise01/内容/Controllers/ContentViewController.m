@@ -9,7 +9,6 @@
 #import "ContentViewController.h"
 
 @interface ContentViewController ()
-
 @end
 
 @implementation ContentViewController
@@ -25,6 +24,12 @@
     
     //设置分割线的样式为None
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    //添加头部视图
+    [self addHeaderView];
+}
+
+#pragma mark --- addHeaderView
+- (void)addHeaderView {
     
 }
 

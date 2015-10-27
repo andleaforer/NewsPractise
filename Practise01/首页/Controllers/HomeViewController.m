@@ -9,10 +9,7 @@
 #import "HomeViewController.h"
 #import "TitleScrollViewLabel.h"
 #import "ContentViewController.h"
-
-#define titleScrollViewH 40
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#import "Define.h"
 
 @interface HomeViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *titleScrollView;
