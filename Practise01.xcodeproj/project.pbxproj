@@ -15,10 +15,10 @@
 		850410401BD74E7500A33820 /* Practise01Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8504103F1BD74E7500A33820 /* Practise01Tests.m */; };
 		8504104B1BD74E7500A33820 /* Practise01UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8504104A1BD74E7500A33820 /* Practise01UITests.m */; };
 		85476E431BD9095300BA4ADE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85476E421BD9095300BA4ADE /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
-		AD755DE71BDD24D5000BB720 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD755DE61BDD24D5000BB720 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
-		AD755DEB1BDD27EC000BB720 /* MainNaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD755DEA1BDD27EC000BB720 /* MainNaViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8555E6AE1BDF9FC00089EA82 /* MainNaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AD1BDF9FC00089EA82 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		85DC27361BDFA244006559F0 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DC27351BDFA244006559F0 /* ContentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AD7630A11BDBD0C9009B8E0B /* TitleScrollViewLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7630A01BDBD0C9009B8E0B /* TitleScrollViewLabel.m */; settings = {ASSET_TAGS = (); }; };
-		AD7630A51BDC8586009B8E0B /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7630A41BDC8586009B8E0B /* ContentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AD7630AB1BDC87E6009B8E0B /* ContentAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7630AA1BDC87E6009B8E0B /* ContentAdView.m */; settings = {ASSET_TAGS = (); }; };
 		AD7630AE1BDC87FD009B8E0B /* ContentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7630AD1BDC87FD009B8E0B /* ContentTableView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -57,14 +57,14 @@
 		8504104C1BD74E7500A33820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85476E411BD9095300BA4ADE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		85476E421BD9095300BA4ADE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		AD755DE51BDD24D5000BB720 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = ../MainViewController.h; sourceTree = "<group>"; };
-		AD755DE61BDD24D5000BB720 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = ../MainViewController.m; sourceTree = "<group>"; };
-		AD755DE91BDD27EC000BB720 /* MainNaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNaViewController.h; sourceTree = "<group>"; };
-		AD755DEA1BDD27EC000BB720 /* MainNaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNaViewController.m; sourceTree = "<group>"; };
+		8555E6AA1BDF9FC00089EA82 /* MainNaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNaViewController.h; sourceTree = "<group>"; };
+		8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNaViewController.m; sourceTree = "<group>"; };
+		8555E6AC1BDF9FC00089EA82 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8555E6AD1BDF9FC00089EA82 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		85DC27341BDFA244006559F0 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		85DC27351BDFA244006559F0 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		AD76309F1BDBD0C9009B8E0B /* TitleScrollViewLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScrollViewLabel.h; sourceTree = "<group>"; };
 		AD7630A01BDBD0C9009B8E0B /* TitleScrollViewLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScrollViewLabel.m; sourceTree = "<group>"; };
-		AD7630A31BDC8586009B8E0B /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContentViewController.h; path = ../ContentViewController.h; sourceTree = "<group>"; };
-		AD7630A41BDC8586009B8E0B /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContentViewController.m; path = ../ContentViewController.m; sourceTree = "<group>"; };
 		AD7630A91BDC87E6009B8E0B /* ContentAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentAdView.h; sourceTree = "<group>"; };
 		AD7630AA1BDC87E6009B8E0B /* ContentAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentAdView.m; sourceTree = "<group>"; };
 		AD7630AC1BDC87FD009B8E0B /* ContentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentTableView.h; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 		85476E3F1BD9095300BA4ADE /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				AD76309E1BDBABDC009B8E0B /* Models */,
+				8555E6B71BDFA0350089EA82 /* Models */,
 				854772FF1BD90FD500BA4ADE /* Views */,
 				85476E401BD9095300BA4ADE /* Controllers */,
 			);
@@ -187,56 +187,72 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		AD755DE41BDD23FB000BB720 /* 主控制器 */ = {
+		8555E6A91BDF9FC00089EA82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AD755DE81BDD24F7000BB720 /* Controllers */,
-			);
-			path = "主控制器";
-			sourceTree = "<group>";
-		};
-		AD755DE81BDD24F7000BB720 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AD755DE51BDD24D5000BB720 /* MainViewController.h */,
-				AD755DE61BDD24D5000BB720 /* MainViewController.m */,
-				AD755DE91BDD27EC000BB720 /* MainNaViewController.h */,
-				AD755DEA1BDD27EC000BB720 /* MainNaViewController.m */,
+				8555E6AA1BDF9FC00089EA82 /* MainNaViewController.h */,
+				8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */,
+				8555E6AC1BDF9FC00089EA82 /* MainViewController.h */,
+				8555E6AD1BDF9FC00089EA82 /* MainViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		AD76309E1BDBABDC009B8E0B /* Models */ = {
+		8555E6B01BDF9FE00089EA82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8555E6B11BDF9FE60089EA82 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8555E6B21BDFA00C0089EA82 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				85DC27341BDFA244006559F0 /* ContentViewController.h */,
+				85DC27351BDFA244006559F0 /* ContentViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8555E6B61BDFA01B0089EA82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8555E6B71BDFA0350089EA82 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD755DE41BDD23FB000BB720 /* 主控制器 */ = {
+			isa = PBXGroup;
+			children = (
+				8555E6B01BDF9FE00089EA82 /* Models */,
+				8555E6B11BDF9FE60089EA82 /* Views */,
+				8555E6A91BDF9FC00089EA82 /* Controllers */,
+			);
+			path = "主控制器";
 			sourceTree = "<group>";
 		};
 		AD7630A21BDC8572009B8E0B /* 内容 */ = {
 			isa = PBXGroup;
 			children = (
-				AD7630A61BDC87A5009B8E0B /* Controllers */,
-				AD7630A71BDC87A5009B8E0B /* Models */,
+				8555E6B61BDFA01B0089EA82 /* Models */,
 				AD7630A81BDC87A5009B8E0B /* Views */,
+				8555E6B21BDFA00C0089EA82 /* Controllers */,
 			);
 			path = "内容";
-			sourceTree = "<group>";
-		};
-		AD7630A61BDC87A5009B8E0B /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				AD7630A31BDC8586009B8E0B /* ContentViewController.h */,
-				AD7630A41BDC8586009B8E0B /* ContentViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		AD7630A71BDC87A5009B8E0B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		AD7630A81BDC87A5009B8E0B /* Views */ = {
@@ -317,6 +333,7 @@
 				TargetAttributes = {
 					850410211BD74E7500A33820 = {
 						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = B9GDU2DD2C;
 					};
 					8504103A1BD74E7500A33820 = {
 						CreatedOnToolsVersion = 7.0;
@@ -380,15 +397,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD755DEB1BDD27EC000BB720 /* MainNaViewController.m in Sources */,
 				8504102A1BD74E7500A33820 /* AppDelegate.m in Sources */,
 				AD7630AB1BDC87E6009B8E0B /* ContentAdView.m in Sources */,
+				85DC27361BDFA244006559F0 /* ContentViewController.m in Sources */,
 				AD7630AE1BDC87FD009B8E0B /* ContentTableView.m in Sources */,
-				AD755DE71BDD24D5000BB720 /* MainViewController.m in Sources */,
-				AD7630A51BDC8586009B8E0B /* ContentViewController.m in Sources */,
+				8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */,
 				AD7630A11BDBD0C9009B8E0B /* TitleScrollViewLabel.m in Sources */,
 				850410271BD74E7500A33820 /* main.m in Sources */,
 				85476E431BD9095300BA4ADE /* HomeViewController.m in Sources */,
+				8555E6AE1BDF9FC00089EA82 /* MainNaViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -77,7 +77,7 @@ static NSString *identifier = @"Cell";
     self.contentScrollView.delegate = self;
 //    [self.contentScrollView setBackgroundColor:[UIColor greenColor]];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];
-    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
+//    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
     [self.contentScrollView setPagingEnabled:YES];
     [self.view addSubview:self.contentScrollView];
 }
@@ -102,7 +102,7 @@ static NSString *identifier = @"Cell";
         [lb addGestureRecognizer:tap];
     }
     //设置titleScrollView的contentSize
-    [self.titleScrollView setContentSize:CGSizeMake(lbW * self.demoData.count, 0)];
+    [self.titleScrollView setContentSize:CGSizeMake(lbW * self.titleScrollView.subviews.count, 0)];
 }
 
 - (void)lbClick:(UITapGestureRecognizer *)gr {

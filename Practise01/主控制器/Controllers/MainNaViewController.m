@@ -18,34 +18,32 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //设置NavigationBar
-    [self setUpNavigationBar];
+//    [self setUpNavigationBar];
+}
+
++ (void)initialize {
+    UINavigationBar *navBar = [UINavigationBar appearance];
+    //设置背景颜色
+    [navBar setBarTintColor:[UIColor redColor]];
+    //设置item的tint颜色
+    [navBar setTintColor:[UIColor whiteColor]];
+    //设置
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    navBar.shadowImage=[[UIImage alloc]init];  //隐藏掉导航栏底部的那条线
+    //2.设置导航栏barButton上面文字的颜色
+    UIBarButtonItem *item=[UIBarButtonItem appearance];
+    [item setTintColor:[UIColor whiteColor]];
+    [item setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
 }
 
 #pragma mark --- self.navigationBar/navigationItem
 
-- (void)setUpNavigationBar {
-    //显示navigationBar，设置title，设置navigationBar的颜色
-    self.navigationItem.title = @"News";
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-    //添加左按钮
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonSelector:)];
-    self.navigationItem.leftBarButtonItem = leftButton;
-    //添加右按钮
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_infoicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
-    self.navigationItem.rightBarButtonItem = rightButton;
-}
-
-#pragma mark --- Method of NavigationBarButtons
-
-- (void)leftButtonSelector:(UIBarButtonItem*)sender {
-    NSLog(@"touch leftButton");
-}
-
-- (void)rightButtonSelector:(UIBarButtonItem*)sender {
-    NSLog(@"touch rightButton");
-}
+//- (void)setUpNavigationBar {
+//    //显示navigationBar，设置navigationBar的颜色
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
