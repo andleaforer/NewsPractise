@@ -17,9 +17,10 @@
 		85476E431BD9095300BA4ADE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85476E421BD9095300BA4ADE /* HomeViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8555E6AE1BDF9FC00089EA82 /* MainNaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AD1BDF9FC00089EA82 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		85DC27361BDFA244006559F0 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85DC27351BDFA244006559F0 /* ContentViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AD7630A11BDBD0C9009B8E0B /* TitleScrollViewLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7630A01BDBD0C9009B8E0B /* TitleScrollViewLabel.m */; settings = {ASSET_TAGS = (); }; };
-		ADB831071BDFC84000450645 /* ContentHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB831061BDFC84000450645 /* ContentHeaderVIew.m */; settings = {ASSET_TAGS = (); }; };
+		ADB831071BDFC84000450645 /* ContentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB831061BDFC84000450645 /* ContentHeaderView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,12 +61,14 @@
 		8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNaViewController.m; sourceTree = "<group>"; };
 		8555E6AC1BDF9FC00089EA82 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8555E6AD1BDF9FC00089EA82 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8567A42B1BE0DCD7002E26D4 /* ContentHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentHeaderViewCell.h; sourceTree = "<group>"; };
+		8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentHeaderViewCell.m; sourceTree = "<group>"; };
 		85DC27341BDFA244006559F0 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
 		85DC27351BDFA244006559F0 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 		AD76309F1BDBD0C9009B8E0B /* TitleScrollViewLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScrollViewLabel.h; sourceTree = "<group>"; };
 		AD7630A01BDBD0C9009B8E0B /* TitleScrollViewLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScrollViewLabel.m; sourceTree = "<group>"; };
-		ADB831051BDFC84000450645 /* ContentHeaderVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentHeaderVIew.h; sourceTree = "<group>"; };
-		ADB831061BDFC84000450645 /* ContentHeaderVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentHeaderVIew.m; sourceTree = "<group>"; };
+		ADB831051BDFC84000450645 /* ContentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentHeaderView.h; sourceTree = "<group>"; };
+		ADB831061BDFC84000450645 /* ContentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentHeaderView.m; sourceTree = "<group>"; };
 		ADB8310B1BDFCC2E00450645 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,8 +260,10 @@
 		AD7630A81BDC87A5009B8E0B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ADB831051BDFC84000450645 /* ContentHeaderVIew.h */,
-				ADB831061BDFC84000450645 /* ContentHeaderVIew.m */,
+				ADB831051BDFC84000450645 /* ContentHeaderView.h */,
+				ADB831061BDFC84000450645 /* ContentHeaderView.m */,
+				8567A42B1BE0DCD7002E26D4 /* ContentHeaderViewCell.h */,
+				8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -406,8 +411,9 @@
 				85DC27361BDFA244006559F0 /* ContentViewController.m in Sources */,
 				8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */,
 				AD7630A11BDBD0C9009B8E0B /* TitleScrollViewLabel.m in Sources */,
+				8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */,
 				850410271BD74E7500A33820 /* main.m in Sources */,
-				ADB831071BDFC84000450645 /* ContentHeaderVIew.m in Sources */,
+				ADB831071BDFC84000450645 /* ContentHeaderView.m in Sources */,
 				85476E431BD9095300BA4ADE /* HomeViewController.m in Sources */,
 				8555E6AE1BDF9FC00089EA82 /* MainNaViewController.m in Sources */,
 			);

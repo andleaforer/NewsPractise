@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContentHeaderVIew : UIView
+@interface ContentHeaderView : UIView
+
+@property (nonatomic, strong) NSMutableArray *arr;
 
 @end

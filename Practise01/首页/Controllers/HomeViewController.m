@@ -11,6 +11,9 @@
 #import "ContentViewController.h"
 #import "Define.h"
 
+#define TitleScrollViewH 40
+#define TitleLbH 30
+
 @interface HomeViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
@@ -47,7 +50,6 @@ static NSString *identifier = @"Cell";
 //    [firstContentVC.view setBackgroundColor:[UIColor redColor]];
     CGRect viewFrame = CGRectMake(0, -64, ScreenWidth, ScreenHeight);
     [firstContentVC.view setFrame:viewFrame];
-    NSLog(@"%f", firstContentVC.view.frame.origin.y);
 //    NSLog(@"%f", firstContentVC.view.frame.size.height);
     [self.contentScrollView addSubview:firstContentVC.view];
     NSLog(@"Mark03");
@@ -60,7 +62,7 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addTitleScrollView
 
 - (void)addTitleScrollView {
-    self.titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, titleScrollViewH)];
+    self.titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, TitleScrollViewH)];
 //    [self.titleScrollView setBackgroundColor:[UIColor orangeColor]];
     [self.titleScrollView setShowsVerticalScrollIndicator:NO];
     [self.titleScrollView setShowsHorizontalScrollIndicator:NO];
@@ -70,7 +72,7 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addContentScrollView
 
 - (void)addContentScrollView {
-    self.contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + titleScrollViewH, ScreenWidth, ScreenHeight - titleScrollViewH - 64)];
+    self.contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + titleScrollViewH, ScreenWidth, ScreenHeight - TitleScrollViewH - 64)];
     self.contentScrollView.delegate = self;
 //    [self.contentScrollView setBackgroundColor:[UIColor greenColor]];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];

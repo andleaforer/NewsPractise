@@ -7,8 +7,13 @@
 //
 
 #import "ContentViewController.h"
+#import "Define.h"
+#import "ContentHeaderView.h"
+#define titleScrollViewH 40
 
 @interface ContentViewController ()
+//头部视图
+@property (nonatomic, strong) ContentHeaderView *headerView;
 @end
 
 @implementation ContentViewController
@@ -30,7 +35,9 @@
 
 #pragma mark --- addHeaderView
 - (void)addHeaderView {
-    
+    ContentHeaderView *headerView = [[ContentHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, HeaderViewH)];
+    [self.tableView setTableHeaderView:headerView];
+    self.headerView = headerView;
 }
 
 - (void)didReceiveMemoryWarning {
