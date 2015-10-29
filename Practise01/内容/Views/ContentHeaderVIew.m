@@ -20,18 +20,37 @@
 @property (nonatomic, strong) UICollectionView *scrollView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation ContentHeaderView
 
 static NSString *identifier = @"ScrollViewCell";
 
-- (NSMutableArray *)arr {
-    if (!_arr) {
-#warning TODO;
-        _arr = [@[@"1", @"2", @"3", @"4"] mutableCopy];
+- (void)setArr:(NSArray *)arr {
+    _arr = arr;
+    //添加定时器
+    if (arr.count > 0) {//获取了数据才进行各项内容刷新
+        if (self.timer == nil) {
+            [self addTimer];//重新添加定时器
+        }
+        self.pageControl.numberOfPages = arr.count;
+        self.titleLabel.text = arr[0];
+        [self.scrollView reloadData];
     }
-    return _arr;
+}
+
+static int count = 0;
+
+#pragma mark --- addTimer
+- (void)addTimer {
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
+    self.timer = timer;
+}
+
+- (void)nextPage {
+    NSLog(@"-----");
+    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -58,7 +77,7 @@ static NSString *identifier = @"ScrollViewCell";
     //创建scrollView
     UICollectionView *scrollView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, HeaderViewH - TitleLbH) collectionViewLayout:flowLayout];
     //注册cell
-    [scrollView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
+    [scrollView registerClass:[ContentHeaderViewCell class] forCellWithReuseIdentifier:identifier];
     //自定义设置
     [scrollView setShowsHorizontalScrollIndicator:NO];
     [scrollView setPagingEnabled:YES];
@@ -98,7 +117,7 @@ static NSString *identifier = @"ScrollViewCell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    ContentHeaderViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     return cell;
 }
 

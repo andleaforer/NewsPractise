@@ -11,5 +11,7 @@
 @interface ContentHeaderViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *imageView;
+//Test
+@property (nonatomic, strong) UILabel *label;
 
 @end

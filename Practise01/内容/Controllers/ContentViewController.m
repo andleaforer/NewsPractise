@@ -38,6 +38,13 @@
     ContentHeaderView *headerView = [[ContentHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, HeaderViewH)];
     [self.tableView setTableHeaderView:headerView];
     self.headerView = headerView;
+#warning 头部视图Demo数据（应该放在进行下拉或者上拉网络数据请求的时候，添加数据）
+#warning 添加onceToken为了模拟
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *demoArr = @[@"第一条新闻", @"第二条新闻", @"第三条新闻", @"第四条新闻"];
+        self.headerView.arr = demoArr;
+    });
 }
 
 - (void)didReceiveMemoryWarning {
