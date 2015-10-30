@@ -9,6 +9,7 @@
 #import "ContentViewController.h"
 #import "Define.h"
 #import "ContentHeaderView.h"
+#import "ContentViewCell.h"
 #define titleScrollViewH 40
 
 @interface ContentViewController ()
@@ -17,6 +18,8 @@
 @end
 
 @implementation ContentViewController
+
+static NSString *identifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +32,8 @@
     
     //设置分割线的样式为None
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    //注册Cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"ContentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
     //添加头部视图
     [self addHeaderView];
 }
@@ -56,23 +61,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return 20;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    ContentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.titleLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+#warning TODO;
+}
 
 /*
 // Override to support conditional editing of the table view.

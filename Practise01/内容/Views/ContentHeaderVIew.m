@@ -40,17 +40,41 @@ static NSString *identifier = @"ScrollViewCell";
     }
 }
 
-static int count = 0;
-
 #pragma mark --- addTimer
 - (void)addTimer {
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
     self.timer = timer;
 }
 
+static int count = 0;
+
 - (void)nextPage {
-    NSLog(@"-----");
-    
+    NSLog(@"%d", count++);
+    //获取当前indexPath
+    NSIndexPath *currentIndexPath = [self IndexPathReset];
+    //计算下一个indexPath
+    NSInteger item = currentIndexPath.item;
+    NSInteger section = currentIndexPath.section;
+    item++;
+    if (item == self.arr.count) {
+        item = 0;
+        section++;
+    }
+    //滑动操作
+    NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
+    [self.scrollView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+}
+
+- (NSIndexPath *)IndexPathReset {
+    NSIndexPath *currentIndexPath = [[self.scrollView indexPathsForVisibleItems] lastObject];
+    NSIndexPath *currentIndexPathReset = [NSIndexPath indexPathForItem:currentIndexPath.item inSection:MaxCount / 2];
+    [self.scrollView scrollToItemAtIndexPath:currentIndexPathReset atScrollPosition:UICollectionViewScrollPositionRight animated:NO];
+    return currentIndexPathReset;
+}
+
+- (void)removeTimer {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
@@ -109,11 +133,11 @@ static int count = 0;
 
 #pragma mark --- UICollectionViewDataSource & UICollectionViewDelegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.arr.count;
+    return MaxCount;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return MaxCount;
+    return self.arr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,7 +146,29 @@ static int count = 0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+#warning TODO!
     NSLog(@"Click!");
+}
+
+#pragma mark --- UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self removeTimer];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self addTimer];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self IndexPathReset];
+}
+
+//滑动关联
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    NSInteger index = scrollView.contentOffset.x / ScreenWidth;
+    NSInteger trueIndex = index % 4 ;
+    self.pageControl.currentPage = trueIndex;
+    self.titleLabel.text = self.arr[trueIndex];
 }
 
 @end

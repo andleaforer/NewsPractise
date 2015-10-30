@@ -24,26 +24,19 @@
 + (void)initialize {
     UINavigationBar *navBar = [UINavigationBar appearance];
     //设置背景颜色
-    [navBar setBarTintColor:[UIColor redColor]];
+    [navBar setBarTintColor:[UIColor whiteColor]];
     //设置item的tint颜色
-    [navBar setTintColor:[UIColor whiteColor]];
+    [navBar setTintColor:[UIColor redColor]];
     //设置
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
     navBar.shadowImage=[[UIImage alloc]init];  //隐藏掉导航栏底部的那条线
     //2.设置导航栏barButton上面文字的颜色
-    UIBarButtonItem *item=[UIBarButtonItem appearance];
-    [item setTintColor:[UIColor whiteColor]];
-    [item setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+//    UIBarButtonItem *item=[UIBarButtonItem appearance];
+//    [item setTintColor:[UIColor whiteColor]];
+//    [item setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
 }
 
 #pragma mark --- self.navigationBar/navigationItem
-
-//- (void)setUpNavigationBar {
-//    //显示navigationBar，设置navigationBar的颜色
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor redColor];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
