@@ -122,7 +122,7 @@ static NSString *identifier = @"Cell";
         [self addChildViewController:contentVC];
         NSLog(@"%f", colorNum);
         //设置颜色
-        [contentVC.view setBackgroundColor:[UIColor colorWithRed:colorNum green:1 - colorNum blue:2 * colorNum alpha:1.0]];
+        [contentVC.view setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
         colorNum += 0.1;
     }
     //设置contentScrollView的contentSize

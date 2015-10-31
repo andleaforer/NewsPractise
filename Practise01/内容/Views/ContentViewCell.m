@@ -2,7 +2,7 @@
 //  ContentViewCell.m
 //  Practise01
 //
-//  Created by Haoran on 15/10/30.
+//  Created by tarena on 15/10/31.
 //  Copyright © 2015年 Andleaforer. All rights reserved.
 //
 
