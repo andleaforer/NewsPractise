@@ -10,6 +10,7 @@
 #import "Define.h"
 #import "ContentHeaderView.h"
 #import "ContentViewCell.h"
+#import "MJRefresh.h"
 #define titleScrollViewH 40
 
 @interface ContentViewController ()
@@ -36,6 +37,7 @@ static NSString *identifier = @"Cell";
     [self.tableView registerNib:[UINib nibWithNibName:@"ContentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
     //添加头部视图
     [self addHeaderView];
+    //添加上拉刷新和下拉刷新
 }
 
 #pragma mark --- addHeaderView
@@ -57,11 +59,21 @@ static NSString *identifier = @"Cell";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark --- MJRefresh method
+
+- (void)loadHeaderData {
+    NSLog(@"loadHeaderData");
+}
+
+- (void)loadFooterData {
+    NSLog(@"loadFooterData");
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 10;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

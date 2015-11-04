@@ -27,7 +27,8 @@ static NSString *identifier = @"Cell";
 
 - (NSArray *)demoData {
     if (!_demoData) {
-        _demoData = @[@"头条", @"欧冠", @"NBA", @"InfoQ", @"Github", @"IGN", @"互联网", @"网游"];
+        NSString *newsURLsPlistPath = [[NSBundle mainBundle] pathForResource:@"NewsURLs" ofType:@"plist"];
+        _demoData = [NSArray arrayWithContentsOfFile:newsURLsPlistPath];
     }
     return _demoData;
 }
@@ -55,6 +56,7 @@ static NSString *identifier = @"Cell";
     NSLog(@"Mark03");
     TitleScrollViewLabel *firstLabel = (TitleScrollViewLabel*)[self.titleScrollView.subviews firstObject];
     [firstLabel setScale:1.0];
+    NSLog(@"Mark04");
     //程序启动位移
 //    [self.titleScrollView setContentOffset:CGPointMake(-(ScreenWidth/2-35), 0) animated:YES];
 }
@@ -91,7 +93,7 @@ static NSString *identifier = @"Cell";
     TitleScrollViewLabel *lb;
     for (int i = 0; i < self.demoData.count; i++) {
         lb = [[TitleScrollViewLabel alloc] initWithFrame:CGRectMake(lbX, lbY, lbW, lbH)];
-        [lb setText:self.demoData[i]];
+        [lb setText:self.demoData[i][@"title"]];
         [self.titleScrollView addSubview:lb];
         lbX += lbW;
         //添加手势
@@ -119,6 +121,9 @@ static NSString *identifier = @"Cell";
     CGFloat colorNum;
     for (int i = 0; i < self.demoData.count; i++) {
         contentVC = [[ContentViewController alloc] init];
+        NSLog(@"Mark1");
+        contentVC.urlStr = self.demoData[i][@"urlString"];
+        NSLog(@"Mark2");
         [self addChildViewController:contentVC];
         NSLog(@"%f", colorNum);
         //设置颜色

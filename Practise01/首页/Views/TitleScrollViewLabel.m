@@ -13,7 +13,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setTextAlignment:NSTextAlignmentCenter];
-        [self setFont:[UIFont fontWithName:@"HelveticaNeue" size:19]];
+        [self setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
         self.scale = 0.0;
     }
     return self;
