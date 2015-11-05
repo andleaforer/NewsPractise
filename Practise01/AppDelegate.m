@@ -52,4 +52,55 @@
     NSLog(@"applicationWillTerminate");
 }
 
+#pragma mark - COREDATA
+- (NSManagedObjectContext *)managedObjectContext {
+    if (!_managedObjectContext) {
+        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    }
+    return _managedObjectContext;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    if (!_persistentStoreCoordinator) {
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+    }
+    return _persistentStoreCoordinator;
+}
+
+//- (NSPersistentStore *)persistentStore {
+//    if (!_persistentStore) {
+//        [_persistentStore = [NSPersistentStore alloc] initWithPersistentStoreCoordinator:self.persistentStoreCoordinator configurationName:nil URL:<#(nonnull NSURL *)#> options:nil]
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @end

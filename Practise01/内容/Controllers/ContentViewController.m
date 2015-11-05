@@ -11,16 +11,42 @@
 #import "ContentHeaderView.h"
 #import "ContentViewCell.h"
 #import "MJRefresh.h"
+#import "DataTool.h"
+#import "NSObject+MJKeyValue.h"
+#import "NewsModel.h"
 #define titleScrollViewH 40
 
 @interface ContentViewController ()
 //头部视图
 @property (nonatomic, strong) ContentHeaderView *headerView;
+//数据缓存数组
+@property (nonatomic, strong) NSMutableArray *dataArray;
+//记录应用开启刷新
+@property (nonatomic, assign) BOOL update;
 @end
 
 @implementation ContentViewController
 
+- (void)setUrlStr:(NSString *)urlStr {
+    _urlStr = urlStr;
+}
+
+- (NSMutableArray *)dataArray {
+    if (!_dataArray ) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+
 static NSString *identifier = @"Cell";
+
+- (void)viewWillAppear:(BOOL)animated {
+    //第一次Appear时自动进行刷新
+    if (!self.update) {
+        [self.tableView.header beginRefreshing];
+        self.update = YES;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +64,10 @@ static NSString *identifier = @"Cell";
     //添加头部视图
     [self addHeaderView];
     //添加上拉刷新和下拉刷新
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadHeaderData)];
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadFooterData)];
+    //设置应用启动刷新状态
+    self.update = NO;
 }
 
 #pragma mark --- addHeaderView
@@ -45,13 +75,6 @@ static NSString *identifier = @"Cell";
     ContentHeaderView *headerView = [[ContentHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, HeaderViewH)];
     [self.tableView setTableHeaderView:headerView];
     self.headerView = headerView;
-#warning 头部视图Demo数据（应该放在进行下拉或者上拉网络数据请求的时候，添加数据）
-#warning 添加onceToken为了模拟
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSArray *demoArr = @[@"第一条新闻", @"第二条新闻", @"第三条新闻", @"第四条新闻"];
-        self.headerView.arr = demoArr;
-    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,18 +85,67 @@ static NSString *identifier = @"Cell";
 #pragma mark --- MJRefresh method
 
 - (void)loadHeaderData {
-    NSLog(@"loadHeaderData");
+#warning TODO - 考虑没有网络连接的情况
+    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/0-20.html", self.urlStr];
+    [self loadDataForType:1 withURL:url];
 }
 
 - (void)loadFooterData {
-    NSLog(@"loadFooterData");
+#warning TODO - 考虑没有网络连接的情况
+    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/%u-20.html", self.urlStr, (int)self.dataArray.count - self.dataArray.count%10];
+    [self loadDataForType:2 withURL:url];
+}
+
+- (void)loadDataForType:(NSInteger)type withURL:(NSString *)url {
+    //idStr：用于从数据库中的对应表中查找实体数据
+    NSString *idStr = nil;
+    idStr = [[self.urlStr componentsSeparatedByString:@"/"] lastObject];
+    [DataTool getDataWithURL:url parameter:nil iDStr:idStr success:^(id responseObject) {
+        //1.模型转对象
+        NSArray *tempArr = [NewsModel objectArrayWithKeyValuesArray:responseObject];
+        
+        //2.区别上拉刷新和下拉刷新
+        switch (type) {
+            case 1:{//上拉刷新
+                //清空self.dataArray的所有数据
+                [self.dataArray removeAllObjects];
+                //临时数组，注意数组传递，切勿误只传指针!!!
+                NSMutableArray *headerViewArr = [NSMutableArray arrayWithCapacity:4];
+                NSMutableArray *tableViewCellArr = [NSMutableArray array];
+                for (NewsModel *newsModel in tempArr) {
+                    if (headerViewArr.count <= 3) {
+                        [headerViewArr addObject:newsModel];
+                    }
+                    [tableViewCellArr addObject:newsModel];
+                }
+                //移除已添加到头部视图的新闻模型对象
+                [tableViewCellArr removeObjectsInArray:headerViewArr];
+                //赋值相应实际用到的数组
+                self.headerView.arr = headerViewArr;
+                self.dataArray = tableViewCellArr;
+                [self.tableView.header endRefreshing];
+                [self.tableView reloadData];
+                break;
+            }
+            case 2:{//下拉刷新
+                
+                break;
+            }
+            default:
+                break;
+        }
+    } failure:^(NSError *error) {
+        [self.tableView.header endRefreshing];
+        [self.tableView.footer endRefreshing];
+        NSLog(@"Error:%@", error.userInfo);
+    }];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 1;
+    return self.dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

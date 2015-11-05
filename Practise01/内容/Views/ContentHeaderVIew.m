@@ -9,6 +9,7 @@
 #import "ContentHeaderVIew.h"
 #import "Define.h"
 #import "ContentHeaderViewCell.h"
+#import "NewsModel.h"
 
 #define MaxCount 100
 #define TitleLBMargin 11
@@ -27,16 +28,18 @@
 
 static NSString *identifier = @"ScrollViewCell";
 
-- (void)setArr:(NSArray *)arr {
+- (void)setArr:(NSMutableArray *)arr {
     _arr = arr;
     //添加定时器
     if (arr.count > 0) {//获取了数据才进行各项内容刷新
         if (self.timer == nil) {
             [self addTimer];//重新添加定时器
         }
-        self.pageControl.numberOfPages = arr.count;
-        self.titleLabel.text = arr[0];
+        //转换对象
+        NewsModel *newsModel = (NewsModel*)arr[0];
+        self.titleLabel.text = newsModel.title;
         [self.scrollView reloadData];
+        self.pageControl.numberOfPages = arr.count;
     }
 }
 
@@ -60,6 +63,7 @@ static int count = 0;
         item = 0;
         section++;
     }
+    NSLog(@"Mark1");
     //滑动操作
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
     [self.scrollView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
@@ -127,6 +131,7 @@ static int count = 0;
     [pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
     [pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
     pageControl.numberOfPages = self.arr.count;
+    NSLog(@"Mark2");
     [self addSubview:pageControl];
     self.pageControl = pageControl;
 }
@@ -142,6 +147,8 @@ static int count = 0;
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ContentHeaderViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    NewsModel *newsModel = self.arr[indexPath.row];
+    cell.newsModel = newsModel;
     return cell;
 }
 
@@ -168,7 +175,9 @@ static int count = 0;
     NSInteger index = scrollView.contentOffset.x / ScreenWidth;
     NSInteger trueIndex = index % 4 ;
     self.pageControl.currentPage = trueIndex;
-    self.titleLabel.text = self.arr[trueIndex];
+    NewsModel *newsModel = (NewsModel*)self.arr[trueIndex];
+    self.titleLabel.text = newsModel.title;
+    NSLog(@"Mark4");
 }
 
 @end

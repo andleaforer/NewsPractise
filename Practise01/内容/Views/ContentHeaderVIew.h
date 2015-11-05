@@ -10,6 +10,6 @@
 
 @interface ContentHeaderView : UIView
 
-@property (nonatomic, strong) NSArray *arr;
+@property (nonatomic, strong) NSMutableArray *arr;
 
 @end

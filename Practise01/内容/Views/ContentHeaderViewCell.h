@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NewsModel.h"
 
 @interface ContentHeaderViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView *imageView;
-//Test
-@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) NewsModel *newsModel;
 
 @end

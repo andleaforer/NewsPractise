@@ -24,10 +24,11 @@
     [imageView setClipsToBounds:YES];
     [self.contentView addSubview:imageView];
     self.imageView = imageView;
-    //Test
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [label setBackgroundColor:[UIColor redColor]];
-    [self.imageView addSubview:label];
+}
+
+- (void)setNewsModel:(NewsModel *)newsModel {
+    _newsModel = newsModel;
+    NSLog(@"Mark00000");
 }
 
 @end

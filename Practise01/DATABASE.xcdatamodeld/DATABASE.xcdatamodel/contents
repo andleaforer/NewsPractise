@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A282b" minimumToolsVersion="Xcode 7.0">
+    <entity name="T1348647853363" representedClassName="T1348647853363" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348648037603" representedClassName="T1348648037603" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348648517839" representedClassName="T1348648517839" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348648650048" representedClassName="T1348648650048" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348649145984" representedClassName="T1348649145984" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348649176279" representedClassName="T1348649176279" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348649580692" representedClassName="T1348649580692" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348649654285" representedClassName="T1348649654285" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348650593803" representedClassName="T1348650593803" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1348654060988" representedClassName="T1348654060988" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="T1351233117091" representedClassName="T1351233117091" syncable="YES">
+        <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="imgsrc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="T1348647853363" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="T1348648517839" positionX="-54" positionY="45" width="128" height="150"/>
+        <element name="T1348649654285" positionX="-36" positionY="81" width="128" height="150"/>
+        <element name="T1351233117091" positionX="-18" positionY="108" width="128" height="150"/>
+        <element name="T1348649145984" positionX="0" positionY="135" width="128" height="150"/>
+        <element name="T1348654060988" positionX="18" positionY="153" width="128" height="150"/>
+        <element name="T1348649176279" positionX="36" positionY="171" width="128" height="150"/>
+        <element name="T1348648037603" positionX="-9" positionY="126" width="128" height="150"/>
+        <element name="T1348650593803" positionX="0" positionY="135" width="128" height="150"/>
+        <element name="T1348648650048" positionX="9" positionY="144" width="128" height="150"/>
+        <element name="T1348649580692" positionX="18" positionY="153" width="128" height="150"/>
+    </elements>
+</model>
