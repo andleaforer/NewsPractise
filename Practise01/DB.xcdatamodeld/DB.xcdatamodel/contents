@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A282b" minimumToolsVersion="Xcode 7.0">
-    <entity name="NewsModel" representedClassName="T1348647853363" syncable="YES">
+    <entity name="Model" representedClassName="Model" syncable="YES">
         <attribute name="digest" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="docid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imgextra" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -11,6 +11,6 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NewsModel" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="Model" positionX="-18" positionY="27" width="128" height="165"/>
     </elements>
 </model>

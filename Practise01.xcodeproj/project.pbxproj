@@ -37,7 +37,9 @@
 		8523EF3A1BEB455B0069ABC4 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8523EF2D1BEB455B0069ABC4 /* NSObject+MJKeyValue.m */; settings = {ASSET_TAGS = (); }; };
 		8523EF3B1BEB455B0069ABC4 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 8523EF2F1BEB455B0069ABC4 /* NSObject+MJProperty.m */; settings = {ASSET_TAGS = (); }; };
 		8523EF3C1BEB455B0069ABC4 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8523EF311BEB455B0069ABC4 /* NSString+MJExtension.m */; settings = {ASSET_TAGS = (); }; };
-		8523EF401BEB7B300069ABC4 /* DATABASE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8523EF3E1BEB7B300069ABC4 /* DATABASE.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		8523F00F1BEB82940069ABC4 /* DB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8523F00D1BEB82940069ABC4 /* DB.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		8523F0141BEB82F00069ABC4 /* Model+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8523F0111BEB82F00069ABC4 /* Model+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
+		8523F0151BEB82F00069ABC4 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 8523F0131BEB82F00069ABC4 /* Model.m */; settings = {ASSET_TAGS = (); }; };
 		8541E44D1BE87DD0007395C9 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8541E4231BE87DD0007395C9 /* MJRefreshAutoFooter.m */; settings = {ASSET_TAGS = (); }; };
 		8541E44E1BE87DD0007395C9 /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8541E4251BE87DD0007395C9 /* MJRefreshBackFooter.m */; settings = {ASSET_TAGS = (); }; };
 		8541E44F1BE87DD0007395C9 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8541E4271BE87DD0007395C9 /* MJRefreshComponent.m */; settings = {ASSET_TAGS = (); }; };
@@ -150,7 +152,11 @@
 		8523EF301BEB455B0069ABC4 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		8523EF311BEB455B0069ABC4 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
 		8523EF3D1BEB5EC00069ABC4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		8523EF3F1BEB7B300069ABC4 /* DATABASE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DATABASE.xcdatamodel; sourceTree = "<group>"; };
+		8523F00E1BEB82940069ABC4 /* DB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DB.xcdatamodel; sourceTree = "<group>"; };
+		8523F0101BEB82F00069ABC4 /* Model+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8523F0111BEB82F00069ABC4 /* Model+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8523F0121BEB82F00069ABC4 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		8523F0131BEB82F00069ABC4 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		8541E4221BE87DD0007395C9 /* MJRefreshAutoFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshAutoFooter.h; sourceTree = "<group>"; };
 		8541E4231BE87DD0007395C9 /* MJRefreshAutoFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshAutoFooter.m; sourceTree = "<group>"; };
 		8541E4241BE87DD0007395C9 /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
@@ -281,7 +287,7 @@
 				85D61F661BE78B4300281059 /* NewsURLs.plist */,
 				850410261BD74E7500A33820 /* main.m */,
 				8523EF3D1BEB5EC00069ABC4 /* PrefixHeader.pch */,
-				8523EF3E1BEB7B300069ABC4 /* DATABASE.xcdatamodeld */,
+				8523F00D1BEB82940069ABC4 /* DB.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -397,6 +403,10 @@
 		8523EF831BEB7E5D0069ABC4 /* ManagedObject */ = {
 			isa = PBXGroup;
 			children = (
+				8523F0101BEB82F00069ABC4 /* Model+CoreDataProperties.h */,
+				8523F0111BEB82F00069ABC4 /* Model+CoreDataProperties.m */,
+				8523F0121BEB82F00069ABC4 /* Model.h */,
+				8523F0131BEB82F00069ABC4 /* Model.m */,
 			);
 			path = ManagedObject;
 			sourceTree = "<group>";
@@ -729,7 +739,6 @@
 			files = (
 				8504102A1BD74E7500A33820 /* AppDelegate.m in Sources */,
 				8523EF381BEB455B0069ABC4 /* NSObject+MJClass.m in Sources */,
-				8523EF401BEB7B300069ABC4 /* DATABASE.xcdatamodeld in Sources */,
 				8541E45A1BE87DD0007395C9 /* MJRefreshStateHeader.m in Sources */,
 				8523EEFF1BEB18150069ABC4 /* AFHTTPRequestOperationManager.m in Sources */,
 				8523EF321BEB455B0069ABC4 /* MJDictionaryCache.m in Sources */,
@@ -749,6 +758,7 @@
 				8541E4561BE87DD0007395C9 /* MJRefreshBackNormalFooter.m in Sources */,
 				8523EF331BEB455B0069ABC4 /* MJExtensionConst.m in Sources */,
 				8523EF041BEB18150069ABC4 /* AFURLRequestSerialization.m in Sources */,
+				8523F0151BEB82F00069ABC4 /* Model.m in Sources */,
 				8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */,
 				8541E4591BE87DD0007395C9 /* MJRefreshNormalHeader.m in Sources */,
 				8541E4531BE87DD0007395C9 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -756,6 +766,7 @@
 				8541E44E1BE87DD0007395C9 /* MJRefreshBackFooter.m in Sources */,
 				8523EF361BEB455B0069ABC4 /* MJPropertyKey.m in Sources */,
 				8523EF191BEB3FA90069ABC4 /* NewsModel.m in Sources */,
+				8523F0141BEB82F00069ABC4 /* Model+CoreDataProperties.m in Sources */,
 				8541E4541BE87DD0007395C9 /* MJRefreshAutoStateFooter.m in Sources */,
 				8541E4581BE87DD0007395C9 /* MJRefreshGifHeader.m in Sources */,
 				8541E4521BE87DD0007395C9 /* MJRefreshAutoGifFooter.m in Sources */,
@@ -777,6 +788,7 @@
 				8541E4571BE87DD0007395C9 /* MJRefreshBackStateFooter.m in Sources */,
 				8523EF391BEB455B0069ABC4 /* NSObject+MJCoding.m in Sources */,
 				8523EF021BEB18150069ABC4 /* AFSecurityPolicy.m in Sources */,
+				8523F00F1BEB82940069ABC4 /* DB.xcdatamodeld in Sources */,
 				8541E45C1BE87DD0007395C9 /* MJRefreshConst.m in Sources */,
 				8523EF351BEB455B0069ABC4 /* MJProperty.m in Sources */,
 			);
@@ -1031,13 +1043,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		8523EF3E1BEB7B300069ABC4 /* DATABASE.xcdatamodeld */ = {
+		8523F00D1BEB82940069ABC4 /* DB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				8523EF3F1BEB7B300069ABC4 /* DATABASE.xcdatamodel */,
+				8523F00E1BEB82940069ABC4 /* DB.xcdatamodel */,
 			);
-			currentVersion = 8523EF3F1BEB7B300069ABC4 /* DATABASE.xcdatamodel */;
-			path = DATABASE.xcdatamodeld;
+			currentVersion = 8523F00E1BEB82940069ABC4 /* DB.xcdatamodel */;
+			path = DB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
