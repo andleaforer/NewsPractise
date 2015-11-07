@@ -63,6 +63,7 @@
 		8555E6AE1BDF9FC00089EA82 /* MainNaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AB1BDF9FC00089EA82 /* MainNaViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8555E6AD1BDF9FC00089EA82 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
 		8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		856B14781BECC1B7006E30CD /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 856B14771BECC1B7006E30CD /* DataBaseTool.m */; settings = {ASSET_TAGS = (); }; };
 		85AFF5161BE4675900A36384 /* ContentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AFF5141BE4675900A36384 /* ContentViewCell.m */; settings = {ASSET_TAGS = (); }; };
 		85AFF5171BE4675900A36384 /* ContentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85AFF5151BE4675900A36384 /* ContentViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 		85D61F671BE78B4300281059 /* NewsURLs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85D61F661BE78B4300281059 /* NewsURLs.plist */; settings = {ASSET_TAGS = (); }; };
@@ -203,6 +204,8 @@
 		8555E6AD1BDF9FC00089EA82 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8567A42B1BE0DCD7002E26D4 /* ContentHeaderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentHeaderViewCell.h; sourceTree = "<group>"; };
 		8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentHeaderViewCell.m; sourceTree = "<group>"; };
+		856B14761BECC1B7006E30CD /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
+		856B14771BECC1B7006E30CD /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
 		85AFF5131BE4675900A36384 /* ContentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewCell.h; sourceTree = "<group>"; };
 		85AFF5141BE4675900A36384 /* ContentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewCell.m; sourceTree = "<group>"; };
 		85AFF5151BE4675900A36384 /* ContentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewCell.xib; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 			children = (
 				8523EF111BEB19280069ABC4 /* HttpTool.h */,
 				8523EF121BEB19280069ABC4 /* HttpTool.m */,
+				856B14761BECC1B7006E30CD /* DataBaseTool.h */,
+				856B14771BECC1B7006E30CD /* DataBaseTool.m */,
 				8523EF141BEB1DC40069ABC4 /* DataTool.h */,
 				8523EF151BEB1DC40069ABC4 /* DataTool.m */,
 				8523EF171BEB3FA90069ABC4 /* NewsModel.h */,
@@ -777,6 +782,7 @@
 				8541E4551BE87DD0007395C9 /* MJRefreshBackGifFooter.m in Sources */,
 				8523EF011BEB18150069ABC4 /* AFNetworkReachabilityManager.m in Sources */,
 				8541E44F1BE87DD0007395C9 /* MJRefreshComponent.m in Sources */,
+				856B14781BECC1B7006E30CD /* DataBaseTool.m in Sources */,
 				8523EF3B1BEB455B0069ABC4 /* NSObject+MJProperty.m in Sources */,
 				ADB831071BDFC84000450645 /* ContentHeaderView.m in Sources */,
 				8541E4511BE87DD0007395C9 /* MJRefreshHeader.m in Sources */,

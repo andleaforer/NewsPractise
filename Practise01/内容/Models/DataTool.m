@@ -8,23 +8,45 @@
 
 #import "DataTool.h"
 #import "HttpTool.h"
+#import "DataBaseTool.h"
+#import "NewsModel.h"
+#import "NSObject+MJKeyValue.h"
+#import "Model+CoreDataProperties.h"
+#import "Model.h"
 
 @implementation DataTool
 
 + (void)getDataWithURL:(NSString *)url parameter:(NSDictionary *)para iDStr:(NSString *)idStr success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     //数据库的实体名字为idStr
     //1.如果COREDATA有数据，则从数据库取值
-#warning TODO;
+    NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
+    NSLog(@"TempArr:%@", tempDBArr);
+    NSMutableArray *transTempArr = [NSMutableArray array];
+    if (tempDBArr.count > 0) {
+        for (Model *model in tempDBArr) {
+            NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
+            NSLog(@"NewsModel:%@", newsModel);
+            [transTempArr addObject:newsModel];
+        }
+        if (success) {
+            success(transTempArr);
+        }
+        return;
+    }
     //2.从网络获取数据，并存储到COREDATA中
     HttpTool *httpTool = [HttpTool sharedHttpTool];
     [httpTool GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *dic = (NSDictionary *)responseObject;
         NSString *key = [dic.keyEnumerator nextObject];
         NSArray *tempArr = dic[key];
+        NSArray *transTempArr = [NewsModel objectArrayWithKeyValuesArray:tempArr];
         //存入数据库
+        for (NewsModel *newsModel in transTempArr) {
+            [DataBaseTool insertToDB:newsModel withIDStr:idStr];
+        }
         //返回结果
         if (success) {
-            success(tempArr);
+            success(transTempArr);
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (failure) {

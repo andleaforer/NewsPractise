@@ -49,10 +49,7 @@ static NSString *identifier = @"ScrollViewCell";
     self.timer = timer;
 }
 
-static int count = 0;
-
 - (void)nextPage {
-    NSLog(@"%d", count++);
     //获取当前indexPath
     NSIndexPath *currentIndexPath = [self IndexPathReset];
     //计算下一个indexPath
@@ -63,7 +60,6 @@ static int count = 0;
         item = 0;
         section++;
     }
-    NSLog(@"Mark1");
     //滑动操作
     NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
     [self.scrollView scrollToItemAtIndexPath:nextIndexPath atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
@@ -131,7 +127,6 @@ static int count = 0;
     [pageControl setPageIndicatorTintColor:[UIColor whiteColor]];
     [pageControl setCurrentPageIndicatorTintColor:[UIColor redColor]];
     pageControl.numberOfPages = self.arr.count;
-    NSLog(@"Mark2");
     [self addSubview:pageControl];
     self.pageControl = pageControl;
 }
@@ -177,7 +172,6 @@ static int count = 0;
     self.pageControl.currentPage = trueIndex;
     NewsModel *newsModel = (NewsModel*)self.arr[trueIndex];
     self.titleLabel.text = newsModel.title;
-    NSLog(@"Mark4");
 }
 
 @end

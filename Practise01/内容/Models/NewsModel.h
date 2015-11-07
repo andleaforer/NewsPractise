@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class Model;
+
 @interface NewsModel : NSObject
 
 /**
@@ -28,5 +30,8 @@
 @property (nonatomic, copy) NSString *docid;
 @property (nonatomic, copy) NSString *source;
 @property (nonatomic, copy) NSString *ptime;
+
+//模型转对象方法
++ (NewsModel *)createNewsModelWithModel:(Model *)model;
 
 @end

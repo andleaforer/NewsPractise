@@ -35,6 +35,11 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     NSLog(@"applicationDidEnterBackground");
+#pragma mark - do save/delete at DATABASE
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Save Error:%@", error.userInfo);
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -53,25 +58,44 @@
 }
 
 #pragma mark - COREDATA
+//老板
 - (NSManagedObjectContext *)managedObjectContext {
-    if (!_managedObjectContext) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+    if (_managedObjectContext) {
+        return _managedObjectContext;
     }
+    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    //绑定
+    [_managedObjectContext setPersistentStoreCoordinator:self.persistentStoreCoordinator];
     return _managedObjectContext;
 }
 
+//秘书
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    if (!_persistentStoreCoordinator) {
-        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+    if (_persistentStoreCoordinator) {
+        return _persistentStoreCoordinator;
+    }
+    //1.绑定员工
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
+    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *storePath = [documentPath stringByAppendingPathComponent:@"DB.sqlite"];
+    NSURL *storeURL = [NSURL fileURLWithPath:storePath];
+    NSError *error = nil;
+    //2.指定工作规章
+    if ([_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        NSLog(@"Error:%@", error.userInfo);
     }
     return _persistentStoreCoordinator;
 }
 
-//- (NSPersistentStore *)persistentStore {
-//    if (!_persistentStore) {
-//        [_persistentStore = [NSPersistentStore alloc] initWithPersistentStoreCoordinator:self.persistentStoreCoordinator configurationName:nil URL:<#(nonnull NSURL *)#> options:nil]
-//    }
-//}
+//员工
+- (NSManagedObjectModel *)managedObjectModel {
+    if (_managedObjectModel) {
+        return _managedObjectModel;
+    }
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"DB" withExtension:@"momd"];
+    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:url];
+    return _managedObjectModel;
+}
 
 
 

@@ -102,7 +102,7 @@ static NSString *identifier = @"Cell";
     idStr = [[self.urlStr componentsSeparatedByString:@"/"] lastObject];
     [DataTool getDataWithURL:url parameter:nil iDStr:idStr success:^(id responseObject) {
         //1.模型转对象
-        NSArray *tempArr = [NewsModel objectArrayWithKeyValuesArray:responseObject];
+        NSArray *tempArr = responseObject;
         
         //2.区别上拉刷新和下拉刷新
         switch (type) {
@@ -167,11 +167,11 @@ static NSString *identifier = @"Cell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 5.0;
+    return 0.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 5.0;
+    return 0.0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

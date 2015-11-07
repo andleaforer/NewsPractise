@@ -28,7 +28,6 @@
 
 - (void)setNewsModel:(NewsModel *)newsModel {
     _newsModel = newsModel;
-    NSLog(@"Mark00000");
 }
 
 @end
