@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class NewsModel;
+
 @interface ContentViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, strong) NewsModel *newsModel;
 
 @end

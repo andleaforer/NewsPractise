@@ -37,7 +37,7 @@ static NSString *identifier = @"Cell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //设置view的背景颜色为白色
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
     //添加标题栏视图ScrollView
     [self addTitleScrollView];
     //添加内容视图contentScrollView
@@ -65,7 +65,7 @@ static NSString *identifier = @"Cell";
 
 - (void)addTitleScrollView {
     self.titleScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, TitleScrollViewH)];
-//    [self.titleScrollView setBackgroundColor:[UIColor orangeColor]];
+    [self.titleScrollView setBackgroundColor:[UIColor whiteColor]];
     [self.titleScrollView setShowsVerticalScrollIndicator:NO];
     [self.titleScrollView setShowsHorizontalScrollIndicator:NO];
     [self.view addSubview:self.titleScrollView];
@@ -76,7 +76,7 @@ static NSString *identifier = @"Cell";
 - (void)addContentScrollView {
     self.contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + titleScrollViewH, ScreenWidth, ScreenHeight - TitleScrollViewH - 64)];
     self.contentScrollView.delegate = self;
-//    [self.contentScrollView setBackgroundColor:[UIColor greenColor]];
+//    [self.contentScrollView setBackgroundColor:[UIColor grayColor]];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];
 //    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
     [self.contentScrollView setPagingEnabled:YES];

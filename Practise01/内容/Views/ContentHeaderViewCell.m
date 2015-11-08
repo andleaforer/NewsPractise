@@ -7,6 +7,7 @@
 //
 
 #import "ContentHeaderViewCell.h"
+#import "UIImageView+WebCache.h"
 
 @implementation ContentHeaderViewCell
 
@@ -18,7 +19,9 @@
 }
 
 - (void)addImage {
+    UIImage *placeholderImage = [UIImage imageNamed:@"placeholder.png"];
     UIImageView *imageView = [UIImageView new];
+    imageView.image = placeholderImage;
     [imageView setFrame:self.bounds];
     [imageView setContentMode:UIViewContentModeScaleToFill];
     [imageView setClipsToBounds:YES];
@@ -27,7 +30,8 @@
 }
 
 - (void)setNewsModel:(NewsModel *)newsModel {
-    _newsModel = newsModel;
+    NSURL *imageURL = [NSURL URLWithString:newsModel.imgsrc];
+    [self.imageView sd_setImageWithURL:imageURL placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
 }
 
 @end

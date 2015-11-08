@@ -107,7 +107,7 @@ static NSString *identifier = @"ScrollViewCell";
     [scrollView setPagingEnabled:YES];
     [scrollView setDelegate:self];
     [scrollView setDataSource:self];
-    [scrollView setBackgroundColor:[UIColor grayColor]];
+//    [scrollView setBackgroundColor:[UIColor grayColor]];
     self.scrollView = scrollView;
     [self addSubview:scrollView];
 }
@@ -115,7 +115,8 @@ static NSString *identifier = @"ScrollViewCell";
 #pragma mark --- addTitleLabel
 - (void)addTitleLabel {
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(TitleLBMargin, self.scrollView.bounds.size.height, ScreenWidth - TitleLBMargin * 2, TitleLbH)];
-    [titleLabel setBackgroundColor:[UIColor redColor]];
+//    [titleLabel setBackgroundColor:[UIColor redColor]];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel = titleLabel;
     [self addSubview:titleLabel];
 }

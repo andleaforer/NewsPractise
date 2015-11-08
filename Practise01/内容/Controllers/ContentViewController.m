@@ -14,6 +14,7 @@
 #import "DataTool.h"
 #import "NSObject+MJKeyValue.h"
 #import "NewsModel.h"
+#import "DetailViewController.h"
 #define titleScrollViewH 40
 
 @interface ContentViewController ()
@@ -58,7 +59,7 @@ static NSString *identifier = @"Cell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //设置分割线的样式为None
-    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //注册Cell
     [self.tableView registerNib:[UINib nibWithNibName:@"ContentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
     //添加头部视图
@@ -92,7 +93,7 @@ static NSString *identifier = @"Cell";
 
 - (void)loadFooterData {
 #warning TODO - 考虑没有网络连接的情况
-    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/%u-20.html", self.urlStr, (int)self.dataArray.count - self.dataArray.count%10];
+    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/%lu-20.html", self.urlStr, (int)self.dataArray.count - self.dataArray.count%10];
     [self loadDataForType:2 withURL:url];
 }
 
@@ -144,20 +145,17 @@ static NSString *identifier = @"Cell";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return self.dataArray.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 1;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ContentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-    
-    cell.titleLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-    cell.backgroundColor = [UIColor grayColor];
+    cell.newsModel = self.dataArray[indexPath.row];
+//    cell.backgroundColor = [UIColor grayColor];
 
     return cell;
 }
@@ -166,16 +164,20 @@ static NSString *identifier = @"Cell";
     return 80;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 0.0;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 5.0;
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 5.0;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 #warning TODO;
+    DetailViewController *detailVC = [DetailViewController new];
+    NewsModel *newsModel = self.dataArray[indexPath.row];
+    detailVC.newsModel = newsModel;
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 /*
