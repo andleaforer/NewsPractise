@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "AFNetworkActivityIndicatorManager.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,9 @@
 //    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
 //    [_window setRootViewController:na];
 //    [_window makeKeyAndVisible];
+    _window.backgroundColor = [UIColor greenColor];
+    //设置后台获取网络标识indicator
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
 }
 

@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class NewsModel;
+
+typedef void(^HVBlock)(NewsModel *);
+
 @interface ContentHeaderView : UIView
 
 @property (nonatomic, strong) NSMutableArray *arr;
+@property (nonatomic, copy) HVBlock block;
 
 @end

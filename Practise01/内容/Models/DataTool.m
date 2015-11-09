@@ -16,22 +16,24 @@
 
 @implementation DataTool
 
-+ (void)getDataWithURL:(NSString *)url parameter:(NSDictionary *)para iDStr:(NSString *)idStr success:(void (^)(id))success failure:(void (^)(NSError *))failure {
++ (void)getDataWithURL:(NSString *)url parameter:(NSDictionary *)para iDStr:(NSString *)idStr refreshCount:(int)count success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     //数据库的实体名字为idStr
-    //1.如果COREDATA有数据，则从数据库取值
-    NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
-    NSLog(@"TempArr:%@", tempDBArr);
-    NSMutableArray *transTempArr = [NSMutableArray array];
-    if (tempDBArr.count > 0) {
-        for (Model *model in tempDBArr) {
-            NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
-            NSLog(@"NewsModel:%@", newsModel);
-            [transTempArr addObject:newsModel];
+    if (count <= 1) {
+        //1.如果COREDATA有数据，则从数据库取值
+        NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
+        NSLog(@"TempArr:%@", tempDBArr);
+        NSMutableArray *transTempArr = [NSMutableArray array];
+        if (tempDBArr.count > 0) {
+            for (Model *model in tempDBArr) {
+                NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
+                NSLog(@"NewsModel:%@", newsModel);
+                [transTempArr addObject:newsModel];
+            }
+            if (success) {
+                success(transTempArr);
+            }
+            return;
         }
-        if (success) {
-            success(transTempArr);
-        }
-        return;
     }
     //2.从网络获取数据，并存储到COREDATA中
     HttpTool *httpTool = [HttpTool sharedHttpTool];
@@ -54,5 +56,52 @@
         }
     }];
 }
+
++ (void)getArticleWithURL:(NSString *)url paramater:(NSDictionary *)para iDStr:(NSString *)idStr success:(void (^)(id))success failure:(void (^)(NSError *))failure {
+    //不做数据库存储操作
+    //1.从网络获取数据
+    HttpTool *httpTool = [HttpTool sharedHttpTool];
+    [httpTool GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (success) {
+            success(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

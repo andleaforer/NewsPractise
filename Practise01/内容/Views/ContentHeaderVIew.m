@@ -10,6 +10,7 @@
 #import "Define.h"
 #import "ContentHeaderViewCell.h"
 #import "NewsModel.h"
+#import "DetailViewController.h"
 
 #define MaxCount 100
 #define TitleLBMargin 11
@@ -22,6 +23,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NewsModel *selectedModel;
 @end
 
 @implementation ContentHeaderView
@@ -114,8 +116,8 @@ static NSString *identifier = @"ScrollViewCell";
 
 #pragma mark --- addTitleLabel
 - (void)addTitleLabel {
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(TitleLBMargin, self.scrollView.bounds.size.height, ScreenWidth - TitleLBMargin * 2, TitleLbH)];
-//    [titleLabel setBackgroundColor:[UIColor redColor]];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.scrollView.bounds.size.height, ScreenWidth, TitleLbH)];
+    [titleLabel setBackgroundColor:[UIColor whiteColor]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel = titleLabel;
     [self addSubview:titleLabel];
@@ -150,7 +152,9 @@ static NSString *identifier = @"ScrollViewCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 #warning TODO!
-    NSLog(@"Click!");
+    NewsModel *newsModel = self.arr[indexPath.item];
+    self.selectedModel = newsModel;
+    self.block(newsModel);
 }
 
 #pragma mark --- UIScrollViewDelegate

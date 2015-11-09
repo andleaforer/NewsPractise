@@ -24,9 +24,11 @@
 @property (nonatomic, strong) NSMutableArray *dataArray;
 //记录应用开启刷新
 @property (nonatomic, assign) BOOL update;
+//记录刷新次数
 @end
 
 @implementation ContentViewController
+static int refreshCount = 0;
 
 - (void)setUrlStr:(NSString *)urlStr {
     _urlStr = urlStr;
@@ -47,10 +49,13 @@ static NSString *identifier = @"Cell";
         [self.tableView.header beginRefreshing];
         self.update = YES;
     }
+    //2.显示navigationBar
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.refreshControl = 0;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -74,6 +79,11 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addHeaderView
 - (void)addHeaderView {
     ContentHeaderView *headerView = [[ContentHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, HeaderViewH)];
+    headerView.block = ^(NewsModel *newsModel){
+        DetailViewController *detailVC = [DetailViewController new];
+        detailVC.newsModel = newsModel;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    };
     [self.tableView setTableHeaderView:headerView];
     self.headerView = headerView;
 }
@@ -98,38 +108,44 @@ static NSString *identifier = @"Cell";
 }
 
 - (void)loadDataForType:(NSInteger)type withURL:(NSString *)url {
+    //记录刷新次数
+    refreshCount++;
     //idStr：用于从数据库中的对应表中查找实体数据
     NSString *idStr = nil;
     idStr = [[self.urlStr componentsSeparatedByString:@"/"] lastObject];
-    [DataTool getDataWithURL:url parameter:nil iDStr:idStr success:^(id responseObject) {
+    [DataTool getDataWithURL:url parameter:nil iDStr:idStr refreshCount:refreshCount success:^(id responseObject) {
         //1.模型转对象
         NSArray *tempArr = responseObject;
         
+        //临时数组，注意数组传递，切勿误只传指针!!!
+        NSMutableArray *headerViewArr = [NSMutableArray arrayWithCapacity:4];
+        NSMutableArray *tableViewArr = [NSMutableArray array];
         //2.区别上拉刷新和下拉刷新
         switch (type) {
             case 1:{//上拉刷新
                 //清空self.dataArray的所有数据
                 [self.dataArray removeAllObjects];
-                //临时数组，注意数组传递，切勿误只传指针!!!
-                NSMutableArray *headerViewArr = [NSMutableArray arrayWithCapacity:4];
-                NSMutableArray *tableViewCellArr = [NSMutableArray array];
                 for (NewsModel *newsModel in tempArr) {
                     if (headerViewArr.count <= 3) {
                         [headerViewArr addObject:newsModel];
                     }
-                    [tableViewCellArr addObject:newsModel];
+                    [tableViewArr addObject:newsModel];
                 }
                 //移除已添加到头部视图的新闻模型对象
-                [tableViewCellArr removeObjectsInArray:headerViewArr];
+                [tableViewArr removeObjectsInArray:headerViewArr];
                 //赋值相应实际用到的数组
                 self.headerView.arr = headerViewArr;
-                self.dataArray = tableViewCellArr;
+                self.dataArray = tableViewArr;
                 [self.tableView.header endRefreshing];
                 [self.tableView reloadData];
                 break;
             }
             case 2:{//下拉刷新
-                
+                for (NewsModel *newsModel in tempArr) {
+                    [self.dataArray addObject:newsModel];
+                }
+                [self.tableView.footer endRefreshing];
+                [self.tableView reloadData];
                 break;
             }
             default:
@@ -177,6 +193,7 @@ static NSString *identifier = @"Cell";
     DetailViewController *detailVC = [DetailViewController new];
     NewsModel *newsModel = self.dataArray[indexPath.row];
     detailVC.newsModel = newsModel;
+//    self.navigationController.navigationBarHidden = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
