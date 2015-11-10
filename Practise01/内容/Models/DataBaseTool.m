@@ -39,6 +39,8 @@
     if (error) {
         NSLog(@"QueryError:%@", error.userInfo);
         return nil;
+    } else {
+        NSLog(@"QuerySuccess");
     }
     //3.返回结果数组
     return tempArr;
@@ -78,6 +80,7 @@
     //3.删除操作
     for (Model *model in tempArr) {
         [managedObjectContext deleteObject:model];
+        NSLog(@"Model:%@", model);
     }
 #pragma mark - save at the moment when application enter background
 //    //4.保存操作
@@ -86,6 +89,36 @@
 //        NSLog(@"SaveError:%@", error.userInfo);
 //    }
 }
+
+//删除全部
++ (void)deleteAllModel {
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    //Request
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:ENTITYNAME];
+    //执行操作
+    NSError *error = nil;
+    NSArray *resultArr = [managedObjectContext executeFetchRequest:request error:&error];
+    for (Model *model in resultArr) {
+        [managedObjectContext deleteObject:model];
+        NSLog(@"Model:%@", model);
+    }
+    //提交操作
+    if (![managedObjectContext save:&error]) {
+        NSLog(@"DeleteAllModel Error:%@", error.userInfo);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

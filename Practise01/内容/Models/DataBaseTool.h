@@ -22,5 +22,5 @@
 
 //删除
 + (void)deleteModelWithIDStr:(NSString *)idStr;
-
++ (void)deleteAllModel;
 @end

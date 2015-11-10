@@ -62,7 +62,7 @@ static NSString *identifier = @"Cell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+//    self.view.backgroundColor = [UIColor redColor];
     //设置分割线的样式为None
 //    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     //注册Cell
@@ -79,6 +79,11 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addHeaderView
 - (void)addHeaderView {
     ContentHeaderView *headerView = [[ContentHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, HeaderViewH)];
+    //底部的灰线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, HeaderViewH - 1, ScreenWidth, 1)];
+    lineView.backgroundColor = [UIColor grayColor];
+    lineView.alpha = 0.3;
+    [headerView addSubview:lineView];
     headerView.block = ^(NewsModel *newsModel){
         DetailViewController *detailVC = [DetailViewController new];
         detailVC.newsModel = newsModel;

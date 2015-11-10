@@ -21,12 +21,10 @@
     if (count <= 1) {
         //1.如果COREDATA有数据，则从数据库取值
         NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
-        NSLog(@"TempArr:%@", tempDBArr);
         NSMutableArray *transTempArr = [NSMutableArray array];
         if (tempDBArr.count > 0) {
             for (Model *model in tempDBArr) {
                 NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
-                NSLog(@"NewsModel:%@", newsModel);
                 [transTempArr addObject:newsModel];
             }
             if (success) {

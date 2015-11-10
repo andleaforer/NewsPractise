@@ -14,6 +14,7 @@
 #import "ArticleImageModel.h"
 #import "SVProgressHUD.h"
 #import "DetailNavigationBarView.h"
+#import "DataBaseTool.h"
 
 @interface DetailViewController () <UIWebViewDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
@@ -60,8 +61,7 @@
 #pragma mark - setupShareBTN
 - (void)setupSharedBTN {
     DetailNavigationBarView *detailNav = [DetailNavigationBarView createNavigationBarWith:CGRectMake(0, 0, ScreenWidth, 64)];
-    //至空原返回按钮
-    
+    /*
     //返回按钮
     UIButton *backBTN = [[UIButton alloc] init];
     UIImage *normalImage = [UIImage imageNamed:@"icon_back"];
@@ -72,8 +72,21 @@
     CGRect frame = CGRectMake(12.5, 64 - normalImage.size.height, normalImage.size.width, normalImage.size.height);
     backBTN.frame = frame;
     [detailNav addSubview:backBTN];
+     */
+    //收藏按钮
+    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action)];
+    self.navigationItem.rightBarButtonItem = markBTN;
     [self.view addSubview:detailNav];
 }
+
+- (void)action {
+    NSLog(@"shared!");
+}
+
+- (void)save {
+    NSLog(@"Save");
+}
+
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -103,7 +116,6 @@
             ArticleModel *articleModel = [ArticleModel initWithDict:dic[self.newsModel.docid]];
             self.articleModel = articleModel;
             //2.加载数据
-            NSLog(@"Mark!");
             [self loadData];
             [SVProgressHUD dismiss];
         } failure:^(NSError *error) {
@@ -123,7 +135,6 @@
     [html appendString:@"</body>"];
     [html appendString:@"</head>"];
     [html appendString:@"</html>"];
-    NSLog(@"HTML:%@", html);
     [self.webView loadHTMLString:html baseURL:nil];
 }
 
@@ -154,11 +165,6 @@
     }
     return body;
 }
-
-- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView {
-    NSLog(@"ScrollToTop");
-}
-
 /*
 - (void)loadRequest:(NSURLRequest *)request;
 - (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;

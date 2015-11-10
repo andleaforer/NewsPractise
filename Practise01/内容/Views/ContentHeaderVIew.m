@@ -109,7 +109,8 @@ static NSString *identifier = @"ScrollViewCell";
     [scrollView setPagingEnabled:YES];
     [scrollView setDelegate:self];
     [scrollView setDataSource:self];
-//    [scrollView setBackgroundColor:[UIColor grayColor]];
+    //设置背景加载图
+    self.scrollView.backgroundColor = [UIColor whiteColor];
     self.scrollView = scrollView;
     [self addSubview:scrollView];
 }

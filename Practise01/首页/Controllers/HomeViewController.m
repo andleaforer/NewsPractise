@@ -10,6 +10,7 @@
 #import "TitleScrollViewLabel.h"
 #import "ContentViewController.h"
 #import "Define.h"
+#import "MarkViewController.h"
 
 #define TitleScrollViewH 40
 #define TitleLbH 30
@@ -17,7 +18,7 @@
 @interface HomeViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-//假数据
+//新闻数据
 @property (nonatomic, strong) NSArray *demoData;
 @end
 
@@ -37,28 +38,30 @@ static NSString *identifier = @"Cell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //设置view的背景颜色为白色
-//    self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.2];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     //添加标题栏视图ScrollView
     [self addTitleScrollView];
-    //添加内容视图contentScrollView
-    [self addContentScrollView];
     //添加标题栏Lable
     [self addLable];
+    //添加内容视图contentScrollView
+    [self addContentScrollView];
     //添加子控制器
     [self addContentVC];
     //添加第一个子控制器
     ContentViewController *firstContentVC = (ContentViewController*)[self.childViewControllers firstObject];
-//    [firstContentVC.view setBackgroundColor:[UIColor redColor]];
-    CGRect viewFrame = CGRectMake(0, -64, ScreenWidth, ScreenHeight);
-    [firstContentVC.view setFrame:viewFrame];
-//    NSLog(@"%f", firstContentVC.view.frame.size.height);
+    [firstContentVC.view setFrame:self.contentScrollView.bounds];
     [self.contentScrollView addSubview:firstContentVC.view];
-    NSLog(@"Mark03");
     TitleScrollViewLabel *firstLabel = (TitleScrollViewLabel*)[self.titleScrollView.subviews firstObject];
     [firstLabel setScale:1.0];
-    NSLog(@"Mark04");
-    //程序启动位移
-//    [self.titleScrollView setContentOffset:CGPointMake(-(ScreenWidth/2-35), 0) animated:YES];
+    //设立监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMarkViewController) name:@"ChangeToMarkBook" object:nil];
+}
+
+#pragma mark --- pushMarkViewController
+- (void)pushMarkViewController {
+    MarkViewController *markVC = [[MarkViewController alloc] init];
+    [self.navigationController pushViewController:markVC animated:YES];
 }
 
 #pragma mark --- addTitleScrollView
@@ -74,10 +77,12 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addContentScrollView
 
 - (void)addContentScrollView {
-    self.contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64 + titleScrollViewH, ScreenWidth, ScreenHeight - TitleScrollViewH - 64)];
+    self.contentScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, titleScrollViewH + 64, ScreenWidth, ScreenHeight - TitleScrollViewH)];
     self.contentScrollView.delegate = self;
 //    [self.contentScrollView setBackgroundColor:[UIColor grayColor]];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];
+    [self.contentScrollView setShowsVerticalScrollIndicator:NO];
+    self.contentScrollView.directionalLockEnabled = YES;
 //    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
     [self.contentScrollView setPagingEnabled:YES];
     [self.view addSubview:self.contentScrollView];
@@ -103,13 +108,13 @@ static NSString *identifier = @"Cell";
         [lb addGestureRecognizer:tap];
     }
     //设置titleScrollView的contentSize
-    [self.titleScrollView setContentSize:CGSizeMake(lbW * self.titleScrollView.subviews.count, 0)];
+    [self.titleScrollView setContentSize:CGSizeMake(lbW * self.titleScrollView.subviews.count, self.titleScrollView.bounds.size.height)];
 }
 
 - (void)lbClick:(UITapGestureRecognizer *)gr {
     TitleScrollViewLabel *tapLb = (TitleScrollViewLabel*)gr.view;
     CGFloat offSetX = tapLb.tag * ScreenWidth;
-    CGFloat offSetY = 0;
+    CGFloat offSetY = self.contentScrollView.contentOffset.y;
     CGPoint offSet = CGPointMake(offSetX, offSetY);
     [self.contentScrollView setContentOffset:offSet animated:YES];
 }
@@ -117,10 +122,9 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addContentVC
 
 - (void)addContentVC {
-    ContentViewController *contentVC;
     CGFloat colorNum;
     for (int i = 0; i < self.demoData.count; i++) {
-        contentVC = [[ContentViewController alloc] init];
+        ContentViewController * contentVC = [[ContentViewController alloc] init];
         NSLog(@"Mark1");
         contentVC.urlStr = self.demoData[i][@"urlString"];
         NSLog(@"Mark2");
@@ -131,7 +135,7 @@ static NSString *identifier = @"Cell";
         colorNum += 0.1;
     }
     //设置contentScrollView的contentSize
-    [self.contentScrollView setContentSize:CGSizeMake(self.childViewControllers.count * [UIScreen mainScreen].bounds.size.width, 0)];
+    [self.contentScrollView setContentSize:CGSizeMake(self.childViewControllers.count * [UIScreen mainScreen].bounds.size.width, self.contentScrollView.bounds.size.height)];
 }
 
 #pragma mark --- UIScrollViewDelegate
@@ -139,12 +143,10 @@ static NSString *identifier = @"Cell";
 //手势导致
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self scrollViewDidEndScrollingAnimation:scrollView];
-    NSLog(@"手势导致");
 }
 
 //代码导致
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    NSLog(@"代码导致");
     //获取index
     NSInteger index = scrollView.contentOffset.x / ScreenWidth;
     //选中的变形
@@ -165,7 +167,7 @@ static NSString *identifier = @"Cell";
     } else if (offSetX > offSetMaxX) {
         offSetX = offSetMaxX;
     }
-    [self.titleScrollView setContentOffset:CGPointMake(offSetX, 0) animated:YES];
+    [self.titleScrollView setContentOffset:CGPointMake(offSetX, self.titleScrollView.contentOffset.y) animated:YES];
 
     //添加子控制器view
     ContentViewController *contentVC = self.childViewControllers[index];
@@ -175,9 +177,7 @@ static NSString *identifier = @"Cell";
         return;
     }
     //若没有加载则加载
-    [contentVC.view setFrame:self.contentScrollView.bounds];
-    NSLog(@"%f", contentVC.view.frame.origin.y);
-//    NSLog(@"%f", contentVC.view.frame.size.height);
+    [contentVC.view setFrame:scrollView.bounds];
     [self.contentScrollView addSubview:contentVC.view];
 }
 
@@ -194,6 +194,9 @@ static NSString *identifier = @"Cell";
         [lbbig setScale:offset];
     }
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
