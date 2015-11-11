@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "LatestDic.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,10 @@
 //    [_window makeKeyAndVisible];
     //设置后台获取网络标识indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    //获取LatestDic
+    NSDictionary *dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"LatestDic"];
+    LatestDic *latestDic = [LatestDic sharedLatestDic];
+    latestDic.Dic = [dic mutableCopy];
     return YES;
 }
 
@@ -58,6 +63,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     NSLog(@"applicationWillTerminate");
+    LatestDic *latestDic = [LatestDic sharedLatestDic];
+#warning 注意，NSUserDefaults存储mutable集合类对象，会出错，要转化为immutable
+    NSDictionary *dic = [NSDictionary dictionaryWithDictionary:latestDic.Dic];
+    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"LatestDic"];
 }
 
 #pragma mark - COREDATA

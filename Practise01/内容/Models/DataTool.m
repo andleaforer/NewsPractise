@@ -13,6 +13,8 @@
 #import "NSObject+MJKeyValue.h"
 #import "Model+CoreDataProperties.h"
 #import "Model.h"
+#import "LatestDic.h"
+#import "Define.h"
 
 @implementation DataTool
 
@@ -33,6 +35,15 @@
             return;
         }
     }
+    //获取latestArr
+    LatestDic *latestDic = [LatestDic sharedLatestDic];
+    if (![latestDic.Dic objectForKey:idStr]) {//没有就创建
+        NSMutableArray *latestArr = [NSMutableArray array];
+        [latestDic.Dic setValue:latestArr forKey:idStr];
+    } else {
+        //清空原数据
+        [latestDic.Dic[idStr] removeAllObjects];
+    }
     //2.从网络获取数据，并存储到COREDATA中
     HttpTool *httpTool = [HttpTool sharedHttpTool];
     [httpTool GET:url parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -40,9 +51,31 @@
         NSString *key = [dic.keyEnumerator nextObject];
         NSArray *tempArr = dic[key];
         NSArray *transTempArr = [NewsModel objectArrayWithKeyValuesArray:tempArr];
-        //存入数据库
+        //根据被管理对象上下文判断是否需要进行存入
+        NSManagedObjectContext *managedObjectContext = [DataBaseTool managedObjectContext];
+        NSSet *latestSet = managedObjectContext.insertedObjects;
+        NSEnumerator *enumerator = [latestSet objectEnumerator];
+        //判断是否存入数据库
+        int i = 0;
         for (NewsModel *newsModel in transTempArr) {
-            [DataBaseTool insertToDB:newsModel withIDStr:idStr];
+            NSLog(@"i:%d", i++);
+            Model *model = [NSEntityDescription insertNewObjectForEntityForName:ENTITYNAME inManagedObjectContext:managedObjectContext];
+            [model setModelWithNewsModel:newsModel IDStr:idStr];
+            for (Model *anotherModel in enumerator) {
+                if ([model.docid isEqualToString:anotherModel.docid]) {
+                    //已存在，不做存入
+                    NSLog(@"已存在");
+                    [managedObjectContext deleteObject:model];
+                } else {
+                    NSLog(@"model:%@", model.docid);
+                    NSLog(@"anotherModel:%@", anotherModel.docid);
+                    //不存在，做存入
+                    NSLog(@"不存在");
+                    [DataBaseTool insertToDB:model withIDStr:idStr];
+                }
+            }
+            //写入latestArr
+            [latestDic.Dic[idStr] addObject:newsModel];
         }
         //返回结果
         if (success) {

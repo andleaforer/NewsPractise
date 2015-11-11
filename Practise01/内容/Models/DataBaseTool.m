@@ -12,8 +12,8 @@
 #import "Model+CoreDataProperties.h"
 #import "Model.h"
 #import "NewsModel.h"
+#import "Define.h"
 
-#define ENTITYNAME @"Model"
 
 @interface DataBaseTool()
 @end
@@ -47,12 +47,12 @@
 }
 
 //插入
-+ (void)insertToDB:(NewsModel *)newModel withIDStr:(NSString *)idStr {
++ (void)insertToDB:(Model *)newModel withIDStr:(NSString *)idStr {
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     //1.创建实体
     Model *newNewsModel = [NSEntityDescription insertNewObjectForEntityForName:ENTITYNAME inManagedObjectContext:managedObjectContext];
     //2.赋值
-    [newNewsModel setModelWithNewsModel:newModel IDStr:idStr];
+    newNewsModel = newModel;
 #pragma mark - save at the moment when application enter background
 //    //3.保存
 //    NSError *error = nil;
@@ -62,6 +62,11 @@
 }
 
 //更新
+//写入PList
++ (void)writeToPlistWithIDStr:(NSString *)idStr {
+    NSArray *lateArr = [[NSUserDefaults standardUserDefaults] objectForKey:idStr];
+    
+}
 
 //删除
 + (void)deleteModelWithIDStr:(NSString *)idStr {

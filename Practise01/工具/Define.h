@@ -19,5 +19,7 @@
 #define HeaderViewH  230
 #define titleLbH 30
 
+#define ENTITYNAME @"Model"
+
 
 #endif /* Define_h */

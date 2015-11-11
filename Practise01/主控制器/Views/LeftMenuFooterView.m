@@ -45,10 +45,10 @@
 }
 
 - (void)dayOrNight:(UIButton *)sender {
-    [sender setImage:[UIImage imageNamed:(self.isClickDON ? @"night_right_navigation_day_new" : @"right_navigation_night_new")] forState:UIControlStateNormal];
-    [sender setImage:[UIImage imageNamed:(self.isClickDON ? @"night_right_navigation_day_pressed_new" : @"right_navigation_night_pressed_new")] forState:UIControlStateSelected];
-    [self.settingButton setImage:[UIImage imageNamed:(self.isClickDON ? @"night_right_navigation_setting_new" : @"right_navigation_setting_new")] forState:UIControlStateNormal];
-    [self.settingButton setImage:[UIImage imageNamed:(self.isClickDON ? @"night_right_navigation_setting_preesed_new" : @"right_navigation_setting_pressed_new")] forState:UIControlStateSelected];
+    [sender setImage:[UIImage imageNamed:(self.isClickDON ? @"right_navigation_night_new" : @"night_right_navigation_day_new")] forState:UIControlStateNormal];
+    [sender setImage:[UIImage imageNamed:(self.isClickDON ? @"right_navigation_night_pressed_new" : @"night_right_navigation_day_pressed_new")] forState:UIControlStateSelected];
+    [self.settingButton setImage:[UIImage imageNamed:(self.isClickDON ? @"right_navigation_setting_new" : @"night_right_navigation_setting_new")] forState:UIControlStateNormal];
+    [self.settingButton setImage:[UIImage imageNamed:(self.isClickDON ? @"right_navigation_setting_pressed_new" : @"night_right_navigation_setting_preesed_new")] forState:UIControlStateSelected];
     NSLog(@"%@", self.isClickDON ? @"切换到夜间" : @"切换到日间");
     self.clickDON = !self.clickDON;
 #warning TODO;

@@ -74,6 +74,7 @@ static NSString *identifier = @"Cell";
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadFooterData)];
     //设置应用启动刷新状态
     self.update = NO;
+    
 }
 
 #pragma mark --- addHeaderView
