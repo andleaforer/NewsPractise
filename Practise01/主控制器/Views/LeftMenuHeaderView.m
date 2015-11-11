@@ -36,13 +36,18 @@
 
 - (void)addBottomLine {
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(16, 199, 168, 1)];
-    lineView.backgroundColor = [UIColor whiteColor];
+    lineView.backgroundColor = [UIColor grayColor];
     [self addSubview:lineView];
 }
 
 - (void)login:(UIButton *)sender {
-#warning TODO;
-    NSLog(@"登录");
+    self.block();
+    [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        //放大
+        sender.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    } completion:^(BOOL finished) {
+        sender.transform = CGAffineTransformIdentity;
+    }];
 }
 
 @end

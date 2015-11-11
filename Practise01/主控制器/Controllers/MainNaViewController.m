@@ -26,14 +26,14 @@
     //设置背景颜色
     [navBar setBarTintColor:[UIColor whiteColor]];
     //设置item的tint颜色
-    [navBar setTintColor:[UIColor redColor]];
+    [navBar setTintColor:[UIColor grayColor]];
     //设置
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
     navBar.shadowImage=[[UIImage alloc]init];  //隐藏掉导航栏底部的那条线
     //2.设置导航栏barButton上面文字的颜色
 //    UIBarButtonItem *item=[UIBarButtonItem appearance];
 //    [item setTintColor:[UIColor whiteColor]];
-//    [item setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+//    [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"System San Francisco Display Ultralight" size:20]} forState:UIControlStateNormal];
 }
 
 #pragma mark --- self.navigationBar/navigationItem

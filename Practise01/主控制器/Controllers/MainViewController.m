@@ -11,6 +11,9 @@
 #import "HomeViewController.h"
 #import "LeftMenuViewController.h"
 #import "Define.h"
+#import "MarkViewController.h"
+#import "RadioViewController.h"
+#import "CommentViewController.h"
 
 //动画时间
 #define Duration 0.3
@@ -20,11 +23,9 @@
 //leftView的宽度
 #define leftViewWidth 200
 
-@interface MainViewController ()
+@interface MainViewController () <LeftMenuViewControllerDelegate>
 //当前显示的view
 @property (nonatomic, strong) UIView *visibleView;
-//子控制器视图
-@property (nonatomic, strong) UIView *homeView;
 //leftView
 @property (nonatomic, strong) UIView *leftView;
 @end
@@ -55,20 +56,28 @@
     LeftMenuViewController *leftMenuVC = [[LeftMenuViewController alloc] init];
     [self addChildViewController:leftMenuVC];
     [self.view insertSubview:leftMenuVC.view atIndex:2];
+    leftMenuVC.delegate = self;
     //隐藏菜单视图
     self.leftView = leftMenuVC.view;
     leftMenuVC.view.hidden = YES;
     //添加首页子控制器
     HomeViewController *homePageVC = [[HomeViewController alloc] init];
-    self.homeView = homePageVC.view;
     [self setUpViewController:homePageVC withTitle:@"新闻"];
+    //添加收藏子控制器
+    MarkViewController *markVC = [[MarkViewController alloc] init];
+    [self setUpViewController:markVC withTitle:@"收藏"];
+    //添加评论子控制器
+    CommentViewController *commentVC = [[CommentViewController alloc] init];
+    [self setUpViewController:commentVC withTitle:@"评论"];
+    //添加电台子控制器
+    RadioViewController *radioVC = [[RadioViewController alloc] init];
+    [self setUpViewController:radioVC withTitle:@"电台"];
 }
 
 - (void)setUpViewController:(UIViewController *)viewController withTitle:(NSString *)title {
     MainNaViewController *nv = [[MainNaViewController alloc] initWithRootViewController:viewController];
     //添加到父控制器
     [self addChildViewController:nv];
-    
     viewController.navigationItem.title = title;
     //添加左按钮
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonSelector:)];
@@ -76,11 +85,13 @@
     //添加右按钮
 //    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_infoicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
 //    viewController.navigationItem.rightBarButtonItem = rightButton;
-    
-    //如果是新闻视图，则加载view
-    [self.view addSubview:nv.view];
+    //暂时不显示的view隐藏
+//    nv.view.hidden = YES;
     if ([title isEqualToString:@"新闻"]) {
+        //如果是新闻视图，则加载view
+        [self.view addSubview:nv.view];
         self.visibleView = nv.view;
+        nv.view.hidden = NO;
     }
 }
 
@@ -132,6 +143,26 @@
 
 - (void)addRightMenu {
     
+}
+
+#pragma mark - LeftMenuViewControllerDelegate
+- (void)changeViewToTargetController:(NSInteger)index {
+    //1.获取目标控制器及视图
+    UIViewController *targetVC = self.childViewControllers[index];
+    UIView *targetView = targetVC.view;
+//    targetView.hidden = NO;
+    //2.传递属性
+    UIButton *button = (UIButton *)[self.visibleView.subviews lastObject];
+    [targetView addSubview:button];
+    targetView.transform = self.visibleView.transform;
+    //3.移除原显示视图
+    [self.visibleView removeFromSuperview];
+    //4.将目标视图设置为当前显示视图
+    self.visibleView = targetView;
+    //5.添加到当前视图
+    [self.view addSubview:self.visibleView];
+    //6.执行动作
+    [self leftButtonSelectorBack:button];
 }
 
 - (void)didReceiveMemoryWarning {

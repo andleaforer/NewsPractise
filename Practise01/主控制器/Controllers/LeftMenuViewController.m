@@ -9,13 +9,17 @@
 #import "LeftMenuViewController.h"
 #import "Define.h"
 #import "LeftMenuHeaderView.h"
+#import "LeftMenuFooterView.h"
 #import "TableViewCellView.h"
 #import "DataBaseTool.h"
 #import <CoreData/CoreData.h>
+#import "LoginViewController.h"
 
 @interface LeftMenuViewController ()
 //头部视图
 @property (nonatomic, strong) LeftMenuHeaderView *headerView;
+//底部视图
+@property (nonatomic, strong) LeftMenuFooterView *footerView;
 @end
 
 @implementation LeftMenuViewController
@@ -33,8 +37,12 @@ static NSString *identifier = @"Cell";
     //测试Dark
     //设置背景颜色
     self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
+    
     //添加头部视图
     [self addHeaderView];
+    //添加底部视图
+    [self addFooterView];
     //注册Cell
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
     //设置tableView分割线样式:None
@@ -49,8 +57,19 @@ static NSString *identifier = @"Cell";
 #pragma mark - addHeaderView
 - (void)addHeaderView {
     LeftMenuHeaderView *headerView = [[LeftMenuHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200)];
+    headerView.block = ^{
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        [self presentViewController:loginVC animated:YES completion:nil];
+    };
     self.headerView = headerView;
     [self.tableView setTableHeaderView:headerView];
+}
+
+#pragma mark - addFooterView
+- (void)addFooterView {
+    LeftMenuFooterView *footerView = [[LeftMenuFooterView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 200)];
+    self.footerView = footerView;
+    [self.tableView setTableFooterView:footerView];
 }
 
 #pragma mark - Table view data source
@@ -70,57 +89,54 @@ static NSString *identifier = @"Cell";
     cell.backgroundColor = [UIColor clearColor];
     //设置tag
     cell.tag = indexPath.row;
+    //底部细线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(16, 43, 168, 1)];
     switch (indexPath.row) {
         case 0:{
-            TableViewCellView *cellView = [[TableViewCellView alloc] initWithImageSrc:@"settings_full_ico" title:@"News"];
-            [cell.contentView addSubview:cellView];
+            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_news"];
+            cell.textLabel.text = @"新闻                  >";
+            lineView.backgroundColor = [UIColor clearColor];
             break;
         }
         case 1:{
-            TableViewCellView *cellView = [[TableViewCellView alloc] initWithImageSrc:@"settings_news_push_ico" title:@"Mark"];
-            [cell.contentView addSubview:cellView];
+            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_reading"];
+            cell.textLabel.text = @"收藏                  >";
+            lineView.backgroundColor = [UIColor clearColor];
             break;
         }
         case 2:{
-            TableViewCellView *cellView = [[TableViewCellView alloc] initWithImageSrc:@"settings_Empty_Cache_ico" title:@"Clean"];
-            [cell.contentView addSubview:cellView];
+            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_comment"];
+            cell.textLabel.text = @"评论                  >";
+            lineView.backgroundColor = [UIColor clearColor];
             break;
         }
         case 3:{
-            TableViewCellView *cellView = [[TableViewCellView alloc] initWithImageSrc:@"settings_version_ico" title:@"Night"];
-            [cell.contentView addSubview:cellView];
+            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_radio"];
+            cell.textLabel.text = @"电台                  >";
+            lineView.backgroundColor = [UIColor grayColor];
             break;
         }
+    
     }
-    //底部细线
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(30, 43, 140, 1)];
-    lineView.backgroundColor = [UIColor blackColor];
     [cell.contentView addSubview:lineView];
     //选中状态
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
-    switch (selectedCell.tag) {
-        case 0:{//切换到新闻
-            
-            break;
-        }
-        case 1:{//切换到收藏
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeToMarkBook" object:nil];
-            break;
-        }
-        case 2:{//清除缓存
-            [DataBaseTool deleteAllModel];
-            break;
-        }
-        case 3:{//切换白天夜晚
-            NSLog(@"nightFalling");
-            break;
-        }
-    }
+    //1.选中就取消选中状态
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //2.
+    [self.delegate changeViewToTargetController:(selectedCell.tag + 1)];
+}
+
+//固定Y轴
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGPoint contentOffset = scrollView.contentOffset;
+    contentOffset.y = 0;
+    scrollView.contentOffset = contentOffset;
 }
 
 //- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

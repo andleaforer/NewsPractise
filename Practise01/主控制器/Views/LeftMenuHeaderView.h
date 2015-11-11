@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LeftMenuBlock)(void);
+
 @interface LeftMenuHeaderView : UIView
+@property (nonatomic, copy) LeftMenuBlock block;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

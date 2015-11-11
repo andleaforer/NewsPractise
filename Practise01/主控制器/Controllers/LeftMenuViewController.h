@@ -11,8 +11,18 @@
 typedef enum : NSUInteger {
     NewsController,
     MarkController,
+    CommentController,
+    RadioController
 } ChildController;
 
+@protocol LeftMenuViewControllerDelegate <NSObject>
+
+-(void)changeViewToTargetController:(NSInteger)index;
+
+@end
+
 @interface LeftMenuViewController : UITableViewController
+
+@property (nonatomic, strong) id<LeftMenuViewControllerDelegate> delegate;
 
 @end
