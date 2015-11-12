@@ -20,8 +20,8 @@
 
 + (void)getDataWithURL:(NSString *)url parameter:(NSDictionary *)para iDStr:(NSString *)idStr refreshCount:(int)count success:(void (^)(id))success failure:(void (^)(NSError *))failure {
     //数据库的实体名字为idStr
-    if (count <= 1) {
-        //1.如果COREDATA有数据，则从数据库取值
+    if (count <= 0) {
+        //1.第一次从数据库拿数据
         NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
         NSMutableArray *transTempArr = [NSMutableArray array];
         if (tempDBArr.count > 0) {
@@ -34,6 +34,7 @@
             }
             return;
         }
+        NSLog(@"Look!____________________________%d", count);
     }
     //获取latestArr
     LatestDic *latestDic = [LatestDic sharedLatestDic];
@@ -54,24 +55,22 @@
         //根据被管理对象上下文判断是否需要进行存入
         NSManagedObjectContext *managedObjectContext = [DataBaseTool managedObjectContext];
         NSSet *latestSet = managedObjectContext.insertedObjects;
-        NSEnumerator *enumerator = [latestSet objectEnumerator];
         //判断是否存入数据库
-        int i = 0;
         for (NewsModel *newsModel in transTempArr) {
-            NSLog(@"i:%d", i++);
             Model *model = [NSEntityDescription insertNewObjectForEntityForName:ENTITYNAME inManagedObjectContext:managedObjectContext];
             [model setModelWithNewsModel:newsModel IDStr:idStr];
-            for (Model *anotherModel in enumerator) {
+            for (Model *anotherModel in latestSet) {
                 if ([model.docid isEqualToString:anotherModel.docid]) {
                     //已存在，不做存入
                     NSLog(@"已存在");
                     [managedObjectContext deleteObject:model];
                 } else {
-                    NSLog(@"model:%@", model.docid);
-                    NSLog(@"anotherModel:%@", anotherModel.docid);
+//                    NSLog(@"model:%@", model.docid);
+//                    NSLog(@"anotherModel:%@", anotherModel.docid);
                     //不存在，做存入
                     NSLog(@"不存在");
-                    [DataBaseTool insertToDB:model withIDStr:idStr];
+//                    [DataBaseTool insertToDB:model withIDStr:idStr];
+                    //存入到managedObjectContext,不删除
                 }
             }
             //写入latestArr

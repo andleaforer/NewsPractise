@@ -30,6 +30,9 @@
     NSDictionary *dic = [[NSUserDefaults standardUserDefaults] objectForKey:@"LatestDic"];
     LatestDic *latestDic = [LatestDic sharedLatestDic];
     latestDic.Dic = [dic mutableCopy];
+    //设置共享URLCache
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
     return YES;
 }
 

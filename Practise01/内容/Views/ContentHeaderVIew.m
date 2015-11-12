@@ -49,6 +49,7 @@ static NSString *identifier = @"ScrollViewCell";
 - (void)addTimer {
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(nextPage) userInfo:nil repeats:YES];
     self.timer = timer;
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)nextPage {
