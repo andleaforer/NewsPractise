@@ -74,8 +74,10 @@
     [detailNav addSubview:backBTN];
      */
     //收藏按钮
-    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action)];
-    self.navigationItem.rightBarButtonItem = markBTN;
+    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(save)];
+    //分享按钮
+    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action)];
+    self.navigationItem.rightBarButtonItems = @[shareBTN, markBTN];
     [self.view addSubview:detailNav];
 }
 
@@ -84,7 +86,7 @@
 }
 
 - (void)save {
-    NSLog(@"Save");
+    [DataBaseTool insertToDB:self.newsModel withIDStr:@"Mark"];
 }
 
 - (void)back {

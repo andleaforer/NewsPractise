@@ -47,7 +47,7 @@
 }
 
 //插入
-+ (void)insertToDB:(Model *)newModel withIDStr:(NSString *)idStr {
++ (void)insertToDB:(NewsModel *)newModel withIDStr:(NSString *)idStr {
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
     //1.创建实体
     Model *newNewsModel = [NSEntityDescription insertNewObjectForEntityForName:ENTITYNAME inManagedObjectContext:managedObjectContext];

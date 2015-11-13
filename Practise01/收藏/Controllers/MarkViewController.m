@@ -7,12 +7,37 @@
 //
 
 #import "MarkViewController.h"
+#import <CoreData/CoreData.h>
+#import "AppDelegate.h"
 
-@interface MarkViewController ()
-
+@interface MarkViewController () <NSFetchedResultsControllerDelegate>
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContect;
+@property (nonatomic, strong) NSFetchedResultsController *resultsController;
 @end
 
 @implementation MarkViewController
+
+- (NSManagedObjectContext *)managedObjectContect {
+    if (!_managedObjectContect) {
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        _managedObjectContect = delegate.managedObjectContext;
+    }
+    return _managedObjectContect;
+}
+
+- (NSFetchedResultsController *)resultsController {
+    if (!_resultsController) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Model"];
+        request.predicate = [NSPredicate predicateWithFormat:@"idStr = %@", @"Mark"];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"ptime" ascending:YES]];
+        _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContect sectionNameKeyPath:@"Mark" cacheName:@"MarkCache"];
+        NSError *error = nil;
+        if ([_resultsController performFetch:&error]) {
+            NSLog(@"PerformFetchError:%@", error.userInfo);
+        }
+    }
+    return _resultsController;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,11 +54,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - NSFetchedResultsControllerDelegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView beginUpdates];
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+}
+
+- (NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName {
+    
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return self.resultsController;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -21,7 +21,7 @@
 + (NSArray *)queryModelWithIDStr:(NSString *)idStr;
 
 //插入
-+ (void)insertToDB:(Model *)newModel withIDStr:(NSString *)idStr;
++ (void)insertToDB:(NewsModel *)newModel withIDStr:(NSString *)idStr;
 
 //更新
 //写入PList
