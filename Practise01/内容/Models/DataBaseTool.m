@@ -52,7 +52,7 @@
     //1.创建实体
     Model *newNewsModel = [NSEntityDescription insertNewObjectForEntityForName:ENTITYNAME inManagedObjectContext:managedObjectContext];
     //2.赋值
-    newNewsModel = newModel;
+    [newNewsModel setModelWithNewsModel:newModel IDStr:idStr];
 #pragma mark - save at the moment when application enter background
 //    //3.保存
 //    NSError *error = nil;

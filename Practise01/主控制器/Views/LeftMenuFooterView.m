@@ -9,6 +9,7 @@
 #import "LeftMenuFooterView.h"
 #import "MJExtension.h"
 
+
 @interface LeftMenuFooterView ()
 @property (nonatomic, assign, getter=isClickDON) BOOL clickDON;
 @property (nonatomic, strong) UIButton *dayOrNightButton;
@@ -51,7 +52,12 @@
     [self.settingButton setImage:[UIImage imageNamed:(self.isClickDON ? @"right_navigation_setting_pressed_new" : @"night_right_navigation_setting_preesed_new")] forState:UIControlStateSelected];
     NSLog(@"%@", self.isClickDON ? @"切换到夜间" : @"切换到日间");
     self.clickDON = !self.clickDON;
-#warning TODO;
+    //DKNightVersion
+//    if ([DKNightVersionManager currentThemeVersion] == DKThemeVersionNight) {
+//        [DKNightVersionManager dawnComing];
+//    } else {
+//        [DKNightVersionManager nightFalling];
+//    }
 }
 
 - (void)setting:(UIButton *)sender {

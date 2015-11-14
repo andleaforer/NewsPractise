@@ -2,7 +2,7 @@
 //  DKNightVersionManager.m
 //  DKNightVersionManager
 //
-//  Created by apple on 4/14/15.
+//  Created by Draveness on 4/14/15.
 //  Copyright (c) 2015 DeltaX. All rights reserved.
 //
 
@@ -12,14 +12,6 @@ NSString *const DKNightVersionNightFallingNotification = @"DKNightVersionNightFa
 NSString *const DKNightVersionDawnComingNotification = @"DKNightVersionDawnComingNotification";
 
 CGFloat const DKNightVersionAnimationDuration = 0.3f;
-
-@protocol DKNightVersionChangeColorProtocol <NSObject>
-
-- (void)changeColor;
-- (void)changeColorWithDuration:(CGFloat)duration;
-- (NSArray *)subviews;
-
-@end
 
 @interface DKNightVersionManager ()
 
@@ -65,70 +57,11 @@ CGFloat const DKNightVersionAnimationDuration = 0.3f;
         return;
     }
     _themeVersion = themeVersion;
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [self.class changeColor:window.subviews.lastObject withDuration:DKNightVersionAnimationDuration];
     if (themeVersion == DKThemeVersionNight) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionNightFallingNotification object:nil];
     } else {
         [[NSNotificationCenter defaultCenter] postNotificationName:DKNightVersionDawnComingNotification object:nil];
     }
-}
-
-+ (void)changeColor:(id <DKNightVersionChangeColorProtocol>)object {
-    if ([object respondsToSelector:@selector(changeColor)]) {
-        [object changeColor];
-    }
-    if ([object respondsToSelector:@selector(subviews)]) {
-        if (![object subviews]) {
-            // Basic case, do nothing.
-            return;
-        } else {
-            for (id subview in [object subviews]) {
-                // recursice darken all the subviews of current view.
-                [self changeColor:subview];
-                if ([subview respondsToSelector:@selector(changeColor)]) {
-                    [subview changeColor];
-                }
-            }
-        }
-    }
-}
-
-+ (void)changeColor:(id <DKNightVersionChangeColorProtocol>)object withDuration:(CGFloat)duration {
-    if ([object respondsToSelector:@selector(changeColorWithDuration:)]) {
-        [object changeColorWithDuration:duration];
-    }
-    if ([object respondsToSelector:@selector(subviews)]) {
-        if (![object subviews]) {
-            // Basic case, do nothing.
-            return;
-        } else {
-            for (id subview in [object subviews]) {
-                // recursice darken all the subviews of current view.
-                [self changeColor:subview withDuration:duration];
-                if ([subview respondsToSelector:@selector(changeColorWithDuration:)]) {
-                    [subview changeColorWithDuration:duration];
-                }
-            }
-        }
-    }
-}
-
-@end
-
-@implementation DKNightVersionManager (RespondClasses)
-
-
-+ (void)addClassToSet:(Class)klass {
-    [self.sharedNightVersionManager.respondClasseses addObject:NSStringFromClass(klass)];
-}
-
-+ (void)removeClassFromSet:(Class)klass {
-    [self.sharedNightVersionManager.respondClasseses removeObject:NSStringFromClass(klass)];
-}
-
-+ (NSSet *)respondClasseses {
-    return [self.sharedNightVersionManager.respondClasseses copy];
 }
 
 @end

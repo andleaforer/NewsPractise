@@ -141,7 +141,7 @@ static NSString *identifier = @"Cell";
                 //清空self.dataArray的所有数据
                 [self.dataArray removeAllObjects];
                 for (NewsModel *newsModel in tempArr) {
-                    if (headerViewArr.count <= 3 && self.refreshCount == 1) {
+                    if (headerViewArr.count <= 3) {
                         [headerViewArr addObject:newsModel];
                     }
                     [self.tableViewArr addObject:newsModel];

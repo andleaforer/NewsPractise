@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "LatestDic.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface AppDelegate ()
 
@@ -33,6 +34,31 @@
     //设置共享URLCache
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
+    //设置ShareSDK
+//    ShareSDK registerApp:@"c4e0099651f2" activePlatforms:@[@(SSDKPlatformSubTypeQZone), @(SSDKPlatformSubTypeQQFriend), @(SSDKPlatformSubTypeWechatSession), @(SSDKPlatformSubTypeWechatTimeline), @(SSDKPlatformTypeMail)] onImport:nil onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
+//        switch (platformType) {
+//            case SSDKPlatformSubTypeQZone:{
+//                <#statements#>
+//                break;
+//            }
+//            case SSDKPlatformSubTypeQQFriend:{
+//                <#statements#>
+//                break;
+//            }
+//            case SSDKPlatformSubTypeWechatSession:{
+//                <#statements#>
+//                break;
+//            }
+//            case SSDKPlatformSubTypeWechatTimeline:{
+//                <#statements#>
+//                break;
+//            }
+//            case SSDKPlatformTypeMail:{
+//                <#statements#>
+//                break;
+//            }
+//        }
+//    }
     return YES;
 }
 
@@ -70,6 +96,11 @@
 #warning 注意，NSUserDefaults存储mutable集合类对象，会出错，要转化为immutable
     NSDictionary *dic = [NSDictionary dictionaryWithDictionary:latestDic.Dic];
     [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"LatestDic"];
+#pragma mark - do save/delete at DATABASE
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Save Error:%@", error.userInfo);
+    }
 }
 
 #pragma mark - COREDATA

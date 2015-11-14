@@ -6,7 +6,7 @@
 target 'Practise01' do
 
 pod "SDWebImage", "~>3.7"
-pod "DKNightVersion", "~> 0.8.0"
+pod "DKNightVersion", "~> 0.9.0"
 
 end
 

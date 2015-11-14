@@ -1,0 +1,24 @@
+PODS:
+  - DKNightVersion (0.9.0):
+    - DKNightVersion/Core (= 0.9.0)
+    - DKNightVersion/Generator (= 0.9.0)
+    - DKNightVersion/Helper (= 0.9.0)
+    - DKNightVersion/UIKit (= 0.9.0)
+  - DKNightVersion/Core (0.9.0)
+  - DKNightVersion/Generator (0.9.0)
+  - DKNightVersion/Helper (0.9.0)
+  - DKNightVersion/UIKit (0.9.0):
+    - DKNightVersion/Core
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+
+DEPENDENCIES:
+  - DKNightVersion (~> 0.9.0)
+  - SDWebImage (~> 3.7)
+
+SPEC CHECKSUMS:
+  DKNightVersion: 405d8328b982f751df09d5d6847931a536e472ee
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+
+COCOAPODS: 0.39.0

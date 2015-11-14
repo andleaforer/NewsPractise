@@ -19,6 +19,7 @@
     // Do any additional setup after loading the view.
     //设置NavigationBar
 //    [self setUpNavigationBar];
+
 }
 
 + (void)initialize {
@@ -30,10 +31,6 @@
     //设置
     [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
     navBar.shadowImage=[[UIImage alloc]init];  //隐藏掉导航栏底部的那条线
-    //2.设置导航栏barButton上面文字的颜色
-//    UIBarButtonItem *item=[UIBarButtonItem appearance];
-//    [item setTintColor:[UIColor whiteColor]];
-//    [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"System San Francisco Display Ultralight" size:20]} forState:UIControlStateNormal];
 }
 
 #pragma mark --- self.navigationBar/navigationItem

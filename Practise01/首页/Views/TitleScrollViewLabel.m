@@ -21,7 +21,7 @@
 
 - (void)setScale:(CGFloat)scale {
     _scale = scale;
-    [self setTextColor:[UIColor colorWithRed:102.0f/255.0f green:204.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [self setTextColor:[UIColor colorWithRed:_scale green:0 blue:0 alpha:1.0f]];
     CGFloat minScale = 0.7;
     CGFloat transScale = minScale + (1 - minScale) * _scale;
     [self setTransform:CGAffineTransformMakeScale(transScale, transScale)];

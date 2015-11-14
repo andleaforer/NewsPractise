@@ -9,6 +9,11 @@
 #import "MarkViewController.h"
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "ContentViewCell.h"
+#import "Model.h"
+#import "NewsModel.h"
+#import "DetailViewController.h"
+#import "DataBaseTool.h"
 
 @interface MarkViewController () <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContect;
@@ -16,6 +21,8 @@
 @end
 
 @implementation MarkViewController
+
+static NSString *identifier = @"Cell";
 
 - (NSManagedObjectContext *)managedObjectContect {
     if (!_managedObjectContect) {
@@ -28,14 +35,15 @@
 - (NSFetchedResultsController *)resultsController {
     if (!_resultsController) {
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Model"];
-        request.predicate = [NSPredicate predicateWithFormat:@"idStr = %@", @"Mark"];
+        request.predicate = [NSPredicate predicateWithFormat:@"list = %@", @"Mark"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"ptime" ascending:YES]];
-        _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContect sectionNameKeyPath:@"Mark" cacheName:@"MarkCache"];
+        _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContect sectionNameKeyPath:@"ptime" cacheName:@"MarkCache"];
         NSError *error = nil;
-        if ([_resultsController performFetch:&error]) {
+        if (![_resultsController performFetch:&error]) {
             NSLog(@"PerformFetchError:%@", error.userInfo);
         }
     }
+    _resultsController.delegate = self;
     return _resultsController;
 }
 
@@ -47,6 +55,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerNib:[UINib nibWithNibName:@"ContentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
+    [DataBaseTool queryModelWithIDStr:@"Mark"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,11 +74,25 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-    
+    switch (type) {
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:YES];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //- (NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName {
@@ -83,19 +107,32 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return 0;
+    NSArray *arr = self.resultsController.sections;
+    id<NSFetchedResultsSectionInfo> target = arr[section];
+    return target.numberOfObjects;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    ContentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     // Configure the cell...
+    Model *model = [self.resultsController objectAtIndexPath:indexPath];
+    NewsModel *newModel = [NewsModel createNewsModelWithModel:model];
+    cell.newsModel = newModel;
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DetailViewController *detailVC = [DetailViewController new];
+    NewsModel *newsModel = [self.resultsController objectAtIndexPath:indexPath];
+    detailVC.newsModel = newsModel;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

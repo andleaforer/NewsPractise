@@ -19,8 +19,8 @@
 //员工
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+//- (void)saveContext;
+//- (NSURL *)applicationDocumentsDirectory;
 
 @end
 

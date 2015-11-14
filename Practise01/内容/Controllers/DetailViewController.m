@@ -15,6 +15,7 @@
 #import "SVProgressHUD.h"
 #import "DetailNavigationBarView.h"
 #import "DataBaseTool.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController () <UIWebViewDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
@@ -35,6 +36,7 @@
     //添加webView
     [self setupWebView];
     //添加底部的分享按钮
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,6 +89,12 @@
 
 - (void)save {
     [DataBaseTool insertToDB:self.newsModel withIDStr:@"Mark"];
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *managedObjectContext = delegate.managedObjectContext;
+    NSError *error = nil;
+    if ([managedObjectContext save:&error]) {
+        NSLog(@"SaveError:%@", error.userInfo);
+    }
 }
 
 - (void)back {
