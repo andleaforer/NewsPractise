@@ -22,21 +22,21 @@
     //结果数据库
     NSMutableArray *transTempArrAll = [NSMutableArray array];
     //数据库的实体名字为idStr
-    if (count <= 0) {
-        //1.第一次从数据库拿数据
-        NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
-        if (tempDBArr.count > 0) {
-            for (Model *model in tempDBArr) {
-                NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
-                [transTempArrAll addObject:newsModel];
-            }
-//            if (success) {
-//                success(transTempArr);
+//    if (count <= 0) {
+//        //1.第一次从数据库拿数据
+//        NSArray *tempDBArr = [DataBaseTool queryModelWithIDStr:idStr];
+//        if (tempDBArr.count > 0) {
+//            for (Model *model in tempDBArr) {
+//                NewsModel *newsModel = [NewsModel createNewsModelWithModel:model];
+//                [transTempArrAll addObject:newsModel];
 //            }
-//            return;
-        }
-
-    }
+////            if (success) {
+////                success(transTempArr);
+////            }
+////            return;
+//        }
+//
+//    }
     //获取latestArr
     LatestDic *latestDic = [LatestDic sharedLatestDic];
     if (![latestDic.Dic objectForKey:idStr]) {//没有就创建
@@ -54,7 +54,7 @@
         NSArray *tempArr = dic[key];
         NSArray *transTempArr = [NewsModel objectArrayWithKeyValuesArray:tempArr];
         //清除数据
-        [DataBaseTool deleteModelWithIDStr:idStr];
+//        [DataBaseTool deleteModelWithIDStr:idStr];
 //        NSSet *latestSet = managedObjectContext.insertedObjects;
         //判断是否存入数据库
         for (NewsModel *newsModel in transTempArr) {
@@ -77,7 +77,7 @@
             //写入结果数组
             [transTempArrAll addObject:newsModel];
             //写入数据库
-            [DataBaseTool insertToDB:newsModel withIDStr:idStr];
+//            [DataBaseTool insertToDB:newsModel withIDStr:idStr];
             //写入latestArr
             [latestDic.Dic[idStr] addObject:newsModel];
         }

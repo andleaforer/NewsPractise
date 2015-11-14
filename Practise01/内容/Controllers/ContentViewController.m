@@ -22,13 +22,15 @@
 @property (nonatomic, strong) ContentHeaderView *headerView;
 //数据缓存数组
 @property (nonatomic, strong) NSMutableArray *dataArray;
+//数据数组
+@property (nonatomic, strong) NSMutableArray *tableViewArr;
 //记录应用开启刷新
 @property (nonatomic, assign) BOOL update;
 //记录刷新次数
+@property (nonatomic, assign) int refreshCount;
 @end
 
 @implementation ContentViewController
-static int refreshCount = 0;
 
 - (void)setUrlStr:(NSString *)urlStr {
     _urlStr = urlStr;
@@ -39,6 +41,13 @@ static int refreshCount = 0;
         _dataArray = [NSMutableArray array];
     }
     return _dataArray;
+}
+
+- (NSMutableArray *)tableViewArr {
+    if (!_tableViewArr) {
+        _tableViewArr = [NSMutableArray array];
+    }
+    return _tableViewArr;
 }
 
 static NSString *identifier = @"Cell";
@@ -55,7 +64,7 @@ static NSString *identifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.refreshControl = 0;
+    self.refreshCount = 0;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -109,39 +118,41 @@ static NSString *identifier = @"Cell";
 
 - (void)loadFooterData {
 #warning TODO - 考虑没有网络连接的情况
-    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/%lu-20.html", self.urlStr, (int)self.dataArray.count - self.dataArray.count%10];
+    NSString *url = [NSString stringWithFormat:@"/nc/article/%@/%d-20.html", self.urlStr, (int)self.tableViewArr.count - (int)self.tableViewArr.count % 10];
+    NSLog(@"Count:%d", (int)self.tableViewArr.count);
     [self loadDataForType:2 withURL:url];
 }
 
 - (void)loadDataForType:(NSInteger)type withURL:(NSString *)url {
     //记录刷新次数
-    refreshCount++;
+    self.refreshCount++;
     //idStr：用于从数据库中的对应表中查找实体数据
     NSString *idStr = nil;
     idStr = [[self.urlStr componentsSeparatedByString:@"/"] lastObject];
-    [DataTool getDataWithURL:url parameter:nil iDStr:idStr refreshCount:refreshCount success:^(id responseObject) {
+    [DataTool getDataWithURL:url parameter:nil iDStr:idStr refreshCount:self.refreshCount success:^(id responseObject) {
         //1.模型转对象
         NSArray *tempArr = responseObject;
         
         //临时数组，注意数组传递，切勿误只传指针!!!
         NSMutableArray *headerViewArr = [NSMutableArray arrayWithCapacity:4];
-        NSMutableArray *tableViewArr = [NSMutableArray array];
         //2.区别上拉刷新和下拉刷新
         switch (type) {
             case 1:{//上拉刷新
                 //清空self.dataArray的所有数据
                 [self.dataArray removeAllObjects];
                 for (NewsModel *newsModel in tempArr) {
-                    if (headerViewArr.count <= 3) {
+                    if (headerViewArr.count <= 3 && self.refreshCount == 1) {
                         [headerViewArr addObject:newsModel];
                     }
-                    [tableViewArr addObject:newsModel];
+                    [self.tableViewArr addObject:newsModel];
+                    [self.dataArray addObject:newsModel];
                 }
-                //移除已添加到头部视图的新闻模型对象
-                [tableViewArr removeObjectsInArray:headerViewArr];
                 //赋值相应实际用到的数组
                 self.headerView.arr = headerViewArr;
-                self.dataArray = tableViewArr;
+                //移除已添加到头部视图的新闻模型对象
+                if (self.refreshCount == 1) {
+                    [self.dataArray removeObjectsInArray:headerViewArr];
+                }
                 [self.tableView.header endRefreshing];
                 [self.tableView reloadData];
                 break;
@@ -149,6 +160,7 @@ static NSString *identifier = @"Cell";
             case 2:{//下拉刷新
                 for (NewsModel *newsModel in tempArr) {
                     [self.dataArray addObject:newsModel];
+                    [self.tableViewArr addObject:newsModel];
                 }
                 [self.tableView.footer endRefreshing];
                 [self.tableView reloadData];
