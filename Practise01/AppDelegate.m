@@ -10,7 +10,7 @@
 #import "MainViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "LatestDic.h"
-#import <ShareSDK/ShareSDK.h>
+
 
 @interface AppDelegate ()
 
