@@ -12,7 +12,7 @@
 #import "NewsModel.h"
 #import "DetailViewController.h"
 
-#define MaxCount 100
+#define MaxCount 4
 #define TitleLBMargin 11
 #define PageControlW 100
 #define HeaderViewH  230

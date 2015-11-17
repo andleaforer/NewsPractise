@@ -85,7 +85,6 @@
     //3.删除操作
     for (Model *model in tempArr) {
         [managedObjectContext deleteObject:model];
-        NSLog(@"Model:%@", model);
     }
 #pragma mark - save at the moment when application enter background
 //    //4.保存操作
@@ -105,7 +104,6 @@
     NSArray *resultArr = [managedObjectContext executeFetchRequest:request error:&error];
     for (Model *model in resultArr) {
         [managedObjectContext deleteObject:model];
-        NSLog(@"Model:%@", model);
     }
     //提交操作
     if (![managedObjectContext save:&error]) {

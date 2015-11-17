@@ -82,7 +82,7 @@ static NSString *identifier = @"Cell";
 //    [self.contentScrollView setBackgroundColor:[UIColor grayColor]];
     [self.contentScrollView setShowsHorizontalScrollIndicator:NO];
     [self.contentScrollView setShowsVerticalScrollIndicator:NO];
-    self.contentScrollView.directionalLockEnabled = YES;
+//    self.contentScrollView.directionalLockEnabled = YES;
 //    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
     [self.contentScrollView setPagingEnabled:YES];
     [self.view addSubview:self.contentScrollView];
@@ -122,17 +122,10 @@ static NSString *identifier = @"Cell";
 #pragma mark --- addContentVC
 
 - (void)addContentVC {
-    CGFloat colorNum;
     for (int i = 0; i < self.demoData.count; i++) {
         ContentViewController * contentVC = [[ContentViewController alloc] init];
-        NSLog(@"Mark1");
         contentVC.urlStr = self.demoData[i][@"urlString"];
-        NSLog(@"Mark2");
         [self addChildViewController:contentVC];
-        NSLog(@"%f", colorNum);
-        //设置颜色
-        [contentVC.view setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.5]];
-        colorNum += 0.1;
     }
     //设置contentScrollView的contentSize
     [self.contentScrollView setContentSize:CGSizeMake(self.childViewControllers.count * [UIScreen mainScreen].bounds.size.width, self.contentScrollView.bounds.size.height)];
@@ -142,11 +135,44 @@ static NSString *identifier = @"Cell";
 
 //手势导致
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    [self scrollViewDidEndScrollingAnimation:scrollView];
+//    [self scrollViewDidEndScrollingAnimation:scrollView];
+    //获取index
+    NSInteger index = scrollView.contentOffset.x / ScreenWidth;
+    //选中的变形
+    TitleScrollViewLabel *lb = (TitleScrollViewLabel*)self.titleScrollView.subviews[index];
+    [lb setScale:1.0];
+    //未选中的打回原形
+    [self.titleScrollView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (index != idx) {
+            TitleScrollViewLabel *lb = self.titleScrollView.subviews[idx];
+            [lb setScale:0.0];
+        }
+    }];
+    //带动titleScrollView
+    CGFloat offSetX = lb.center.x - ScreenWidth / 2;
+    CGFloat offSetMaxX = self.titleScrollView.contentSize.width - ScreenWidth;
+    if (offSetX < 0) {
+        offSetX = 0;
+    } else if (offSetX > offSetMaxX) {
+        offSetX = offSetMaxX;
+    }
+    [self.titleScrollView setContentOffset:CGPointMake(offSetX, self.titleScrollView.contentOffset.y) animated:YES];
+    
+    //添加子控制器view
+    ContentViewController *contentVC = self.childViewControllers[index];
+    contentVC.index = index;
+    //若子控制器view已加载则不再加载
+    if (contentVC.view.superview) {
+        return;
+    }
+    //若没有加载则加载
+    [contentVC.view setFrame:scrollView.bounds];
+    [self.contentScrollView addSubview:contentVC.view];
 }
 
 //代码导致
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    NSLog(@"Animation!");
     //获取index
     NSInteger index = scrollView.contentOffset.x / ScreenWidth;
     //选中的变形

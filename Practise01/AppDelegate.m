@@ -10,6 +10,7 @@
 #import "MainViewController.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "LatestDic.h"
+#import "CustomURLCache.h"
 
 
 @interface AppDelegate ()
@@ -32,7 +33,7 @@
     LatestDic *latestDic = [LatestDic sharedLatestDic];
     latestDic.Dic = [dic mutableCopy];
     //设置共享URLCache
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    CustomURLCache *sharedCache = [CustomURLCache standardURLCache];
     [NSURLCache setSharedURLCache:sharedCache];
     //设置ShareSDK
 //    ShareSDK registerApp:@"c4e0099651f2" activePlatforms:@[@(SSDKPlatformSubTypeQZone), @(SSDKPlatformSubTypeQQFriend), @(SSDKPlatformSubTypeWechatSession), @(SSDKPlatformSubTypeWechatTimeline), @(SSDKPlatformTypeMail)] onImport:nil onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {

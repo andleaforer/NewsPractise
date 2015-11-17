@@ -16,7 +16,7 @@ static HttpTool* httpTool = nil;
     dispatch_once(&onceToken, ^{
         NSURL *url = [NSURL URLWithString:@"http://c.m.163.com/"];
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-//        config.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        config.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
         httpTool = [[HttpTool alloc] initWithBaseURL:url sessionConfiguration:config];
         httpTool.responseSerializer.acceptableContentTypes=[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
     });

@@ -45,6 +45,7 @@
 #pragma mark --- addBackground
 - (void)addBackground {
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"default_cover_gaussian"]];
+    //内容模式：等比例放大，然后充满屏幕
     backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
     backgroundImageView.frame = [UIScreen mainScreen].bounds;
     [self.view insertSubview:backgroundImageView atIndex:0];
@@ -60,7 +61,7 @@
     leftMenuVC.delegate = self;
     //隐藏菜单视图
     self.leftView = leftMenuVC.view;
-    leftMenuVC.view.hidden = YES;
+//    leftMenuVC.view.hidden = YES;
     //添加首页子控制器
     HomeViewController *homePageVC = [[HomeViewController alloc] init];
     [self setUpViewController:homePageVC withTitle:@"新闻"];
@@ -92,7 +93,7 @@
         //如果是新闻视图，则加载view
         [self.view addSubview:nv.view];
         self.visibleView = nv.view;
-        nv.view.hidden = NO;
+//        nv.view.hidden = NO;
     }
 }
 
@@ -100,17 +101,20 @@
 
 - (void)leftButtonSelector:(UIBarButtonItem*)sender {
     //显示leftMenu视图
-    self.leftView.hidden = NO;
+//    self.leftView.hidden = NO;
     //动画开始效果设置
     self.leftView.transform = CGAffineTransformMakeTranslation(-200, 0);
-    self.leftView.alpha = 0.5;
+    self.leftView.alpha = 0.0f;
     //动画设置
     [UIView animateWithDuration:Duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         //恢复leftView
-        self.leftView.alpha = 1.0;
+        self.leftView.alpha = 1.0f;
         self.leftView.transform = CGAffineTransformIdentity;
         //visibleView效果
-        self.visibleView.transform = CGAffineTransformMakeTranslation(200, 0);
+        CGAffineTransform scale = CGAffineTransformMakeScale(0.7, 0.7);
+        CGAffineTransform trans = CGAffineTransformMakeTranslation(150, 0);
+        CGAffineTransform transform = CGAffineTransformConcat(scale, trans);
+        self.visibleView.transform = transform;
 //        self.visibleView.alpha = 0.5;
     } completion:^(BOOL finished) {
         //动画结束添加coverBTN
@@ -123,14 +127,14 @@
 - (void)leftButtonSelectorBack:(UIButton *)sender {
     [UIView animateWithDuration:Duration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         //leftMenu动画效果
-        self.leftView.alpha = 0.5;
+        self.leftView.alpha = 0.0f;
         self.leftView.transform = CGAffineTransformMakeTranslation(-200, 0);
         //visibleView动画效果
 //        self.visibleView.alpha = 1.0;
         self.visibleView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         //隐藏leftView
-        self.leftView.hidden = YES;
+//        self.leftView.hidden = YES;
         //动画结束移除coverBTN
         [sender removeFromSuperview];
     }];
