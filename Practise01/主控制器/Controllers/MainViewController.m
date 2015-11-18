@@ -39,7 +39,7 @@
     [self addBackground];
     //添加子控制器
     [self addChildControllers];
-    //DKNight
+    
 }
 
 #pragma mark --- addBackground

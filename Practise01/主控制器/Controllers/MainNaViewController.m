@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
     //设置NavigationBar
 //    [self setUpNavigationBar];
-
+    //DKNight
 }
 
 + (void)initialize {
@@ -27,9 +27,9 @@
     //设置背景颜色
     [navBar setBarTintColor:[UIColor whiteColor]];
     //设置item的tint颜色
-    [navBar setTintColor:[UIColor grayColor]];
+    [navBar setTintColor:[UIColor blackColor]];
     //设置
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}];
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]}];
     navBar.shadowImage=[[UIImage alloc]init];  //隐藏掉导航栏底部的那条线
 }
 

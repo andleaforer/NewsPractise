@@ -37,6 +37,15 @@
     [self setupWebView];
     //添加底部的分享按钮
     
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+//        cell.normalBackgroundColor = [UIColor whiteColor];
+//        cell.nightBackgroundColor = UIColorFromRGB(0x343434);
+        self.webView.normalBackgroundColor = [UIColor whiteColor];
+        self.webView.nightBackgroundColor = UIColorFromRGB(0x343434);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,9 +85,9 @@
     [detailNav addSubview:backBTN];
      */
     //收藏按钮
-    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(save)];
+    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
     //分享按钮
-    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(action)];
+    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(action)];
     self.navigationItem.rightBarButtonItems = @[shareBTN, markBTN];
     [self.view addSubview:detailNav];
 }
@@ -89,10 +98,10 @@
 
 - (void)save {
     [DataBaseTool insertToDB:self.newsModel withIDStr:@"Mark"];
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     NSManagedObjectContext *managedObjectContext = delegate.managedObjectContext;
     NSError *error = nil;
-    if ([managedObjectContext save:&error]) {
+    if (![managedObjectContext save:&error]) {
         NSLog(@"SaveError:%@", error.userInfo);
     }
 }

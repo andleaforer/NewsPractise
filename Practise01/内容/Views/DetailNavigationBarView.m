@@ -18,6 +18,13 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
+        //DKNight
+        @weakify(self);
+        [self addColorChangedBlock:^{
+            @strongify(self);
+            self.normalBackgroundColor = [UIColor whiteColor];
+            self.nightBackgroundColor = UIColorFromRGB(0x343434);
+        }];
     }
     return self;
 }

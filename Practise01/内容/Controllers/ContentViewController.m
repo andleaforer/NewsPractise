@@ -83,7 +83,13 @@ static NSString *identifier = @"Cell";
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadFooterData)];
     //设置应用启动刷新状态
     self.update = NO;
-    
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+            self.tableView.normalBackgroundColor = [UIColor whiteColor];
+            self.tableView.nightBackgroundColor = UIColorFromRGB(0x343434);
+    }];
 }
 
 #pragma mark --- addHeaderView
@@ -190,7 +196,13 @@ static NSString *identifier = @"Cell";
     ContentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     cell.newsModel = self.dataArray[indexPath.row];
 //    cell.backgroundColor = [UIColor grayColor];
-
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+        cell.normalBackgroundColor = [UIColor whiteColor];
+        cell.nightBackgroundColor = UIColorFromRGB(0x343434);
+    }];
     return cell;
 }
 
@@ -207,7 +219,7 @@ static NSString *identifier = @"Cell";
 //}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-#warning TODO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DetailViewController *detailVC = [DetailViewController new];
     NewsModel *newsModel = self.dataArray[indexPath.row];
     detailVC.newsModel = newsModel;

@@ -1315,6 +1315,7 @@
 					"$(PROJECT_DIR)/Practise01/Third-Party",
 					Lib/libraries,
 				);
+				GCC_PREFIX_HEADER = /Users/tarena/NewsPractise/Practise01/PrefixHeader.pch;
 				INFOPLIST_FILE = Practise01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1345,6 +1346,7 @@
 					"$(PROJECT_DIR)/Practise01/Third-Party",
 					Lib/libraries,
 				);
+				GCC_PREFIX_HEADER = /Users/tarena/NewsPractise/Practise01/PrefixHeader.pch;
 				INFOPLIST_FILE = Practise01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

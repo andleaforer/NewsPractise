@@ -53,11 +53,11 @@
     NSLog(@"%@", self.isClickDON ? @"切换到夜间" : @"切换到日间");
     self.clickDON = !self.clickDON;
     //DKNightVersion
-//    if ([DKNightVersionManager currentThemeVersion] == DKThemeVersionNight) {
-//        [DKNightVersionManager dawnComing];
-//    } else {
-//        [DKNightVersionManager nightFalling];
-//    }
+    if ([DKNightVersionManager currentThemeVersion] == DKThemeVersionNight) {
+        [DKNightVersionManager dawnComing];
+    } else {
+        [DKNightVersionManager nightFalling];
+    }
 }
 
 - (void)setting:(UIButton *)sender {
