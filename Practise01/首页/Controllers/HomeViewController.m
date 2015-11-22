@@ -12,12 +12,15 @@
 #import "Define.h"
 #import "MarkViewController.h"
 
+
 #define TitleScrollViewH 40
 #define TitleLbH 30
 
 @interface HomeViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
+//podOver
+@property (nonatomic, strong) DXPopover *popover;
 //新闻数据
 @property (nonatomic, strong) NSArray *demoData;
 @end
@@ -56,6 +59,12 @@ static NSString *identifier = @"Cell";
     [firstLabel setScale:1.0];
     //设立监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMarkViewController) name:@"ChangeToMarkBook" object:nil];
+}
+
+#pragma mark --- addRightMenu
+
+- (void)addRightMenu {
+    
 }
 
 #pragma mark --- pushMarkViewController

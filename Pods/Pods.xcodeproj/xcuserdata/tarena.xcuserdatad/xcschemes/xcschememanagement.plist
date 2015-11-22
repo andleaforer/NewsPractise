@@ -14,6 +14,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>DXPopover-DXPopover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DXPopover.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -32,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>13E97B3A61D250CA7517AFA5B0E3C184</key>
+		<key>15E71DC389AF81EB7D768EBA0F13A0C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,12 +52,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>446823BFB9372F195466E9E7612345B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4EE6ED6A08A38D482DE19BB8113E995D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A5903014A0E1394A718D20E234DF5935</key>
+		<key>BD25B2157D8BCA944D6FF3EC2B073ECB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5E6C4816E398AD3989F4B7C0FD045AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

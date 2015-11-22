@@ -44,7 +44,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgT-km-NGY">
                             <rect key="frame" x="40" y="25" width="240" height="31"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="邮箱或手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-cQ-1qA">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-cQ-1qA">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                     <animations/>
                                     <constraints>
@@ -139,6 +139,21 @@
                                 <action selector="login:" destination="-1" eventType="touchUpInside" id="4EH-Hh-unj"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IF8-Xn-qyG">
+                            <rect key="frame" x="222" y="155" width="63" height="15"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="63" id="Dkg-Pl-5ln"/>
+                                <constraint firstAttribute="height" constant="15" id="uFL-HC-4W5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
+                            <state key="normal" title="忘记密码">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="forgetPWD:" destination="-1" eventType="touchUpInside" id="14N-Sy-KkD"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -146,13 +161,17 @@
                         <constraint firstAttribute="height" constant="170" id="0vP-EW-Vad"/>
                         <constraint firstItem="8lk-5p-svC" firstAttribute="leading" secondItem="x5T-eq-AHP" secondAttribute="trailing" constant="18" id="82x-Ky-tzm"/>
                         <constraint firstItem="x5T-eq-AHP" firstAttribute="top" secondItem="JfP-dt-lXY" secondAttribute="bottom" constant="17" id="Ivg-lc-B0g"/>
+                        <constraint firstAttribute="bottom" secondItem="IF8-Xn-qyG" secondAttribute="bottom" id="KFg-Wm-5bL"/>
                         <constraint firstAttribute="trailing" secondItem="JfP-dt-lXY" secondAttribute="trailing" constant="40" id="MIh-L6-HjP"/>
                         <constraint firstItem="sgT-km-NGY" firstAttribute="leading" secondItem="bsV-WI-8DM" secondAttribute="leading" constant="40" id="O3Q-Ll-Fc0"/>
                         <constraint firstAttribute="bottom" secondItem="8lk-5p-svC" secondAttribute="bottom" constant="23" id="RhS-0G-uFR"/>
                         <constraint firstAttribute="trailing" secondItem="8lk-5p-svC" secondAttribute="trailing" constant="40" id="a2O-Iu-wFO"/>
                         <constraint firstAttribute="bottom" secondItem="x5T-eq-AHP" secondAttribute="bottom" constant="23" id="aE9-0a-oTz"/>
+                        <constraint firstItem="IF8-Xn-qyG" firstAttribute="leading" secondItem="bsV-WI-8DM" secondAttribute="leading" constant="222" id="aPv-3m-1Za"/>
                         <constraint firstItem="sgT-km-NGY" firstAttribute="top" secondItem="bsV-WI-8DM" secondAttribute="top" constant="25" id="b5e-3N-B5W"/>
                         <constraint firstAttribute="trailing" secondItem="sgT-km-NGY" secondAttribute="trailing" constant="40" id="fFu-D6-3pe"/>
+                        <constraint firstAttribute="trailing" secondItem="IF8-Xn-qyG" secondAttribute="trailing" constant="35" id="gYs-N4-B1C"/>
+                        <constraint firstItem="IF8-Xn-qyG" firstAttribute="top" secondItem="8lk-5p-svC" secondAttribute="bottom" constant="8" id="hIt-my-6qw"/>
                         <constraint firstItem="JfP-dt-lXY" firstAttribute="leading" secondItem="bsV-WI-8DM" secondAttribute="leading" constant="40" id="m4X-fP-sfs"/>
                         <constraint firstAttribute="width" constant="320" id="nvH-JC-Vne"/>
                         <constraint firstItem="JfP-dt-lXY" firstAttribute="top" secondItem="sgT-km-NGY" secondAttribute="bottom" constant="13" id="qJ9-Sg-Cdk"/>

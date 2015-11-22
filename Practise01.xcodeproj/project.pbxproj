@@ -69,6 +69,24 @@
 		855A5B3B1BF724F4001AC655 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 855A5B381BF724F4001AC655 /* libSDWebImage.a */; };
 		8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */; };
 		856B14781BECC1B7006E30CD /* DataBaseTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 856B14771BECC1B7006E30CD /* DataBaseTool.m */; };
+		8598C9171C017051008B46AE /* RightMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8598C9161C017051008B46AE /* RightMenuView.m */; settings = {ASSET_TAGS = (); }; };
+		8598C9191C017093008B46AE /* RightMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8598C9181C017093008B46AE /* RightMenuView.xib */; settings = {ASSET_TAGS = (); }; };
+		8598C91B1C019669008B46AE /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C91A1C019669008B46AE /* BmobSDK.framework */; settings = {ASSET_TAGS = (); }; };
+		8598C91D1C0196B1008B46AE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C91C1C0196B1008B46AE /* CoreLocation.framework */; };
+		8598C91F1C0196B8008B46AE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C91E1C0196B8008B46AE /* Security.framework */; };
+		8598C9211C0196C1008B46AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C9201C0196C1008B46AE /* CoreGraphics.framework */; };
+		8598C9231C0196CD008B46AE /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C9221C0196CD008B46AE /* MobileCoreServices.framework */; };
+		8598C9251C0196D2008B46AE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C9241C0196D2008B46AE /* CFNetwork.framework */; };
+		8598C9271C0196DB008B46AE /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C9261C0196DB008B46AE /* CoreTelephony.framework */; };
+		8598C9291C0196E4008B46AE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C9281C0196E4008B46AE /* SystemConfiguration.framework */; };
+		8598C92B1C0196F1008B46AE /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C92A1C0196F1008B46AE /* libz.1.2.5.tbd */; };
+		8598C92D1C019702008B46AE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C92C1C019702008B46AE /* AVFoundation.framework */; };
+		8598C92F1C019709008B46AE /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8598C92E1C019709008B46AE /* MediaPlayer.framework */; };
+		8598C9321C019941008B46AE /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8598C9311C019941008B46AE /* LoginModel.m */; settings = {ASSET_TAGS = (); }; };
+		8598C9351C019955008B46AE /* RegisterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8598C9341C019955008B46AE /* RegisterModel.m */; settings = {ASSET_TAGS = (); }; };
+		8598C9381C019E36008B46AE /* LoginedUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8598C9371C019E36008B46AE /* LoginedUser.m */; settings = {ASSET_TAGS = (); }; };
+		8598C93C1C01ABEB008B46AE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8598C93A1C01ABEB008B46AE /* RegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		8598C93D1C01ABEB008B46AE /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8598C93B1C01ABEB008B46AE /* RegisterViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		85D414521BF2F3BF0072658D /* System San Francisco Display Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85D414471BF2F3BF0072658D /* System San Francisco Display Bold.ttf */; };
 		85D414531BF2F3BF0072658D /* System San Francisco Display Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85D414481BF2F3BF0072658D /* System San Francisco Display Medium.ttf */; };
 		85D414541BF2F3BF0072658D /* System San Francisco Display Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85D414491BF2F3BF0072658D /* System San Francisco Display Regular.ttf */; };
@@ -142,7 +160,7 @@
 		850410221BD74E7500A33820 /* Practise01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practise01.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850410261BD74E7500A33820 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		850410281BD74E7500A33820 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		850410291BD74E7500A33820 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
+		850410291BD74E7500A33820 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8504102F1BD74E7500A33820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		850410311BD74E7500A33820 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850410341BD74E7500A33820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -244,6 +262,29 @@
 		8567A42C1BE0DCD7002E26D4 /* ContentHeaderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentHeaderViewCell.m; sourceTree = "<group>"; };
 		856B14761BECC1B7006E30CD /* DataBaseTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseTool.h; sourceTree = "<group>"; };
 		856B14771BECC1B7006E30CD /* DataBaseTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseTool.m; sourceTree = "<group>"; };
+		8598C9151C017051008B46AE /* RightMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightMenuView.h; sourceTree = "<group>"; };
+		8598C9161C017051008B46AE /* RightMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightMenuView.m; sourceTree = "<group>"; };
+		8598C9181C017093008B46AE /* RightMenuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightMenuView.xib; sourceTree = "<group>"; };
+		8598C91A1C019669008B46AE /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BmobSDK.framework; sourceTree = "<group>"; };
+		8598C91C1C0196B1008B46AE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8598C91E1C0196B8008B46AE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8598C9201C0196C1008B46AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8598C9221C0196CD008B46AE /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		8598C9241C0196D2008B46AE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		8598C9261C0196DB008B46AE /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		8598C9281C0196E4008B46AE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		8598C92A1C0196F1008B46AE /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		8598C92C1C019702008B46AE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8598C92E1C019709008B46AE /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		8598C9301C019941008B46AE /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginModel.h; path = "Practise01/右边/LoginModel.h"; sourceTree = SOURCE_ROOT; };
+		8598C9311C019941008B46AE /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginModel.m; path = "Practise01/右边/LoginModel.m"; sourceTree = SOURCE_ROOT; };
+		8598C9331C019955008B46AE /* RegisterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterModel.h; path = "Practise01/右边/RegisterModel.h"; sourceTree = SOURCE_ROOT; };
+		8598C9341C019955008B46AE /* RegisterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterModel.m; path = "Practise01/右边/RegisterModel.m"; sourceTree = SOURCE_ROOT; };
+		8598C9361C019E36008B46AE /* LoginedUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginedUser.h; path = "Practise01/右边/LoginedUser.h"; sourceTree = SOURCE_ROOT; };
+		8598C9371C019E36008B46AE /* LoginedUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginedUser.m; path = "Practise01/右边/LoginedUser.m"; sourceTree = SOURCE_ROOT; };
+		8598C9391C01ABEB008B46AE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		8598C93A1C01ABEB008B46AE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		8598C93B1C01ABEB008B46AE /* RegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		85D414471BF2F3BF0072658D /* System San Francisco Display Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Bold.ttf"; sourceTree = "<group>"; };
 		85D414481BF2F3BF0072658D /* System San Francisco Display Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Medium.ttf"; sourceTree = "<group>"; };
 		85D414491BF2F3BF0072658D /* System San Francisco Display Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "System San Francisco Display Regular.ttf"; sourceTree = "<group>"; };
@@ -299,13 +340,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8598C92F1C019709008B46AE /* MediaPlayer.framework in Frameworks */,
+				8598C92D1C019702008B46AE /* AVFoundation.framework in Frameworks */,
+				85FCA36D1BF72A2800E9F648 /* libicucore.tbd in Frameworks */,
+				8598C92B1C0196F1008B46AE /* libz.1.2.5.tbd in Frameworks */,
+				8598C9291C0196E4008B46AE /* SystemConfiguration.framework in Frameworks */,
+				8598C9271C0196DB008B46AE /* CoreTelephony.framework in Frameworks */,
+				8598C9251C0196D2008B46AE /* CFNetwork.framework in Frameworks */,
+				8598C9231C0196CD008B46AE /* MobileCoreServices.framework in Frameworks */,
+				8598C9211C0196C1008B46AE /* CoreGraphics.framework in Frameworks */,
+				8598C91F1C0196B8008B46AE /* Security.framework in Frameworks */,
+				8598C91D1C0196B1008B46AE /* CoreLocation.framework in Frameworks */,
 				85FCA3791BF72A9900E9F648 /* libsqlite3.tbd in Frameworks */,
 				85FCA3771BF72A8F00E9F648 /* AdSupport.framework in Frameworks */,
 				85FCA3751BF72A8800E9F648 /* ImageIO.framework in Frameworks */,
 				85FCA3731BF72A4D00E9F648 /* JavaScriptCore.framework in Frameworks */,
 				85FCA3711BF72A4500E9F648 /* libstdc++.tbd in Frameworks */,
 				85FCA36F1BF72A3600E9F648 /* libz.tbd in Frameworks */,
-				85FCA36D1BF72A2800E9F648 /* libicucore.tbd in Frameworks */,
+				8598C91B1C019669008B46AE /* BmobSDK.framework in Frameworks */,
 				855A5B391BF724F4001AC655 /* libDKNightVersion.a in Frameworks */,
 				855A5B3A1BF724F4001AC655 /* libPods-Practise01.a in Frameworks */,
 				855A5B3B1BF724F4001AC655 /* libSDWebImage.a in Frameworks */,
@@ -333,6 +385,16 @@
 		3E715630BE2E798B0C11EA99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8598C92E1C019709008B46AE /* MediaPlayer.framework */,
+				8598C92C1C019702008B46AE /* AVFoundation.framework */,
+				8598C92A1C0196F1008B46AE /* libz.1.2.5.tbd */,
+				8598C9281C0196E4008B46AE /* SystemConfiguration.framework */,
+				8598C9261C0196DB008B46AE /* CoreTelephony.framework */,
+				8598C9241C0196D2008B46AE /* CFNetwork.framework */,
+				8598C9221C0196CD008B46AE /* MobileCoreServices.framework */,
+				8598C9201C0196C1008B46AE /* CoreGraphics.framework */,
+				8598C91E1C0196B8008B46AE /* Security.framework */,
+				8598C91C1C0196B1008B46AE /* CoreLocation.framework */,
 				85FCA3781BF72A9900E9F648 /* libsqlite3.tbd */,
 				85FCA3761BF72A8F00E9F648 /* AdSupport.framework */,
 				85FCA3741BF72A8800E9F648 /* ImageIO.framework */,
@@ -375,6 +437,7 @@
 		850410191BD74E7500A33820 = {
 			isa = PBXGroup;
 			children = (
+				8598C91A1C019669008B46AE /* BmobSDK.framework */,
 				85011B751BF073560055E70C /* QuartzCore.framework */,
 				850410241BD74E7500A33820 /* Practise01 */,
 				8504103E1BD74E7500A33820 /* Practise01Tests */,
@@ -398,6 +461,7 @@
 		850410241BD74E7500A33820 /* Practise01 */ = {
 			isa = PBXGroup;
 			children = (
+				8598C9141C01703E008B46AE /* 右边 */,
 				85D414631BF337320072658D /* 电台 */,
 				85D4145F1BF337040072658D /* 评论 */,
 				85F6A0BC1BF2121200D0F0D5 /* Login */,
@@ -408,6 +472,7 @@
 				85F6A0881BF1C33300D0F0D5 /* 收藏 */,
 				85476E3F1BD9095300BA4ADE /* 首页 */,
 				850410281BD74E7500A33820 /* AppDelegate.h */,
+				850410291BD74E7500A33820 /* AppDelegate.m */,
 				8504102E1BD74E7500A33820 /* Main.storyboard */,
 				850410311BD74E7500A33820 /* Assets.xcassets */,
 				850410331BD74E7500A33820 /* LaunchScreen.storyboard */,
@@ -692,6 +757,16 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		8598C9141C01703E008B46AE /* 右边 */ = {
+			isa = PBXGroup;
+			children = (
+				8598C9151C017051008B46AE /* RightMenuView.h */,
+				8598C9161C017051008B46AE /* RightMenuView.m */,
+				8598C9181C017093008B46AE /* RightMenuView.xib */,
+			);
+			path = "右边";
+			sourceTree = "<group>";
+		};
 		85D414461BF2EB8B0072658D /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +907,9 @@
 				85F6A0C01BF2122E00D0F0D5 /* LoginViewController.h */,
 				85F6A0C11BF2122E00D0F0D5 /* LoginViewController.m */,
 				85F6A0C21BF2122E00D0F0D5 /* LoginViewController.xib */,
+				8598C9391C01ABEB008B46AE /* RegisterViewController.h */,
+				8598C93A1C01ABEB008B46AE /* RegisterViewController.m */,
+				8598C93B1C01ABEB008B46AE /* RegisterViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -839,6 +917,12 @@
 		85F6A0BE1BF2121200D0F0D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8598C9301C019941008B46AE /* LoginModel.h */,
+				8598C9311C019941008B46AE /* LoginModel.m */,
+				8598C9331C019955008B46AE /* RegisterModel.h */,
+				8598C9341C019955008B46AE /* RegisterModel.m */,
+				8598C9361C019E36008B46AE /* LoginedUser.h */,
+				8598C9371C019E36008B46AE /* LoginedUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -898,7 +982,6 @@
 			children = (
 				8510730A1BFB2771005543E8 /* CustomURLCache.h */,
 				8510730B1BFB2771005543E8 /* CustomURLCache.m */,
-				850410291BD74E7500A33820 /* AppDelegate.m */,
 				ADB8310B1BDFCC2E00450645 /* Define.h */,
 				AD242FCF1BF390C3002DE28D /* LatestDic.h */,
 				AD242FD01BF390C3002DE28D /* LatestDic.m */,
@@ -1015,12 +1098,14 @@
 			files = (
 				85D414581BF2F3BF0072658D /* System San Francisco Text Heavy.ttf in Resources */,
 				850410351BD74E7500A33820 /* LaunchScreen.storyboard in Resources */,
+				8598C93D1C01ABEB008B46AE /* RegisterViewController.xib in Resources */,
 				85D4145B1BF2F3BF0072658D /* System San Francisco Text Thin.ttf in Resources */,
 				850410321BD74E7500A33820 /* Assets.xcassets in Resources */,
 				85D414561BF2F3BF0072658D /* System San Francisco Display Ultralight.ttf in Resources */,
 				85D414571BF2F3BF0072658D /* System San Francisco Text Bold.ttf in Resources */,
 				AD242FB71BEF9103002DE28D /* detail.css in Resources */,
 				85D414521BF2F3BF0072658D /* System San Francisco Display Bold.ttf in Resources */,
+				8598C9191C017093008B46AE /* RightMenuView.xib in Resources */,
 				85D4145A1BF2F3BF0072658D /* System San Francisco Text Regular.ttf in Resources */,
 				85011B721BF072FE0055E70C /* SVProgressHUD.bundle in Resources */,
 				8541E45B1BE87DD0007395C9 /* MJRefresh.bundle in Resources */,
@@ -1105,6 +1190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85D4145E1BF328DC0072658D /* LeftMenuFooterView.m in Sources */,
+				8598C9381C019E36008B46AE /* LoginedUser.m in Sources */,
 				85011B791BF088370055E70C /* DetailNavigationBarView.m in Sources */,
 				8504102A1BD74E7500A33820 /* AppDelegate.m in Sources */,
 				8523EF381BEB455B0069ABC4 /* NSObject+MJClass.m in Sources */,
@@ -1118,6 +1204,7 @@
 				8555E6AF1BDF9FC00089EA82 /* MainViewController.m in Sources */,
 				AD7630A11BDBD0C9009B8E0B /* TitleScrollViewLabel.m in Sources */,
 				8541E45E1BE87DD0007395C9 /* UIScrollView+MJRefresh.m in Sources */,
+				8598C9321C019941008B46AE /* LoginModel.m in Sources */,
 				8523EF3A1BEB455B0069ABC4 /* NSObject+MJKeyValue.m in Sources */,
 				85011B5E1BF02C3F0055E70C /* ArticleModel.m in Sources */,
 				855A5B071BF6FD74001AC655 /* ContentViewCell.m in Sources */,
@@ -1128,6 +1215,7 @@
 				8541E4561BE87DD0007395C9 /* MJRefreshBackNormalFooter.m in Sources */,
 				8523EF331BEB455B0069ABC4 /* MJExtensionConst.m in Sources */,
 				8523F0151BEB82F00069ABC4 /* Model.m in Sources */,
+				8598C9171C017051008B46AE /* RightMenuView.m in Sources */,
 				8567A42D1BE0DCD7002E26D4 /* ContentHeaderViewCell.m in Sources */,
 				8541E4591BE87DD0007395C9 /* MJRefreshNormalHeader.m in Sources */,
 				8541E4531BE87DD0007395C9 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -1136,6 +1224,7 @@
 				8523EF361BEB455B0069ABC4 /* MJPropertyKey.m in Sources */,
 				8523EF191BEB3FA90069ABC4 /* NewsModel.m in Sources */,
 				8523F0141BEB82F00069ABC4 /* Model+CoreDataProperties.m in Sources */,
+				8598C93C1C01ABEB008B46AE /* RegisterViewController.m in Sources */,
 				8541E4541BE87DD0007395C9 /* MJRefreshAutoStateFooter.m in Sources */,
 				AD242FD11BF390C3002DE28D /* LatestDic.m in Sources */,
 				85D4146C1BF3376D0072658D /* CommentViewController.m in Sources */,
@@ -1156,6 +1245,7 @@
 				85011B711BF072FE0055E70C /* SVIndefiniteAnimatedView.m in Sources */,
 				85F6A08E1BF1C38700D0F0D5 /* MarkViewController.m in Sources */,
 				85F6A0841BF18DF700D0F0D5 /* LeftMenuHeaderView.m in Sources */,
+				8598C9351C019955008B46AE /* RegisterModel.m in Sources */,
 				85011B741BF072FE0055E70C /* SVRadialGradientLayer.m in Sources */,
 				8541E4511BE87DD0007395C9 /* MJRefreshHeader.m in Sources */,
 				85476E431BD9095300BA4ADE /* HomeViewController.m in Sources */,
@@ -1314,8 +1404,9 @@
 					Lib/libraries/extends/QQSDK,
 					"$(PROJECT_DIR)/Practise01/Third-Party",
 					Lib/libraries,
+					"$(PROJECT_DIR)",
 				);
-				GCC_PREFIX_HEADER = /Users/tarena/NewsPractise/Practise01/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Applications/NewsPractise/Practise01/PrefixHeader.pch;
 				INFOPLIST_FILE = Practise01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1345,8 +1436,9 @@
 					Lib/libraries/extends/QQSDK,
 					"$(PROJECT_DIR)/Practise01/Third-Party",
 					Lib/libraries,
+					"$(PROJECT_DIR)",
 				);
-				GCC_PREFIX_HEADER = /Users/tarena/NewsPractise/Practise01/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Applications/NewsPractise/Practise01/PrefixHeader.pch;
 				INFOPLIST_FILE = Practise01/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "RegisterModel.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -84,10 +86,14 @@
 }
 
 - (IBAction)regist:(id)sender {
-    
+    RegisterViewController *vc = [[RegisterViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)login:(id)sender {
     
+}
+- (IBAction)forgetPWD:(id)sender {
+    NSLog(@"忘记密码");
 }
 - (IBAction)acountTF:(id)sender {
     [self.acountTextField resignFirstResponder];

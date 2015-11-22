@@ -62,12 +62,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "DKNightVersion/property.json"
   install_resource "DKNightVersion/Gemfile"
   install_resource "DKNightVersion/generator/lib"
+  install_resource "${BUILT_PRODUCTS_DIR}/DXPopover.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "DKNightVersion/Rakefile"
   install_resource "DKNightVersion/property.json"
   install_resource "DKNightVersion/Gemfile"
   install_resource "DKNightVersion/generator/lib"
+  install_resource "${BUILT_PRODUCTS_DIR}/DXPopover.bundle"
 fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

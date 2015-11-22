@@ -79,7 +79,7 @@ static NSString *identifier = @"Cell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,20 +99,14 @@ static NSString *identifier = @"Cell";
             break;
         }
         case 1:{
-            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_reading"];
-            cell.textLabel.text = @"收藏                  >";
+            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_photo"];
+            cell.textLabel.text = @"小说                  >";
             lineView.backgroundColor = [UIColor clearColor];
             break;
         }
         case 2:{
             cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_comment"];
-            cell.textLabel.text = @"评论                  >";
-            lineView.backgroundColor = [UIColor clearColor];
-            break;
-        }
-        case 3:{
-            cell.imageView.image = [UIImage imageNamed:@"sidebar_nav_radio"];
-            cell.textLabel.text = @"电台                  >";
+            cell.textLabel.text = @"收藏                  >";
             lineView.backgroundColor = [UIColor grayColor];
             break;
         }
