@@ -8,6 +8,8 @@ target 'Practise01' do
 pod "SDWebImage", "~>3.7"
 pod "DKNightVersion", "~> 0.9.0"
 pod "AFNetworking", "~> 2.0"
+pod "MBProgressHUD", "~> 0.9.1"
+pod 'DXPopover', '~> 0.1.1'
 end
 
 target 'Practise01Tests' do

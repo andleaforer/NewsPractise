@@ -11,6 +11,7 @@
 #import "AFNetworkActivityIndicatorManager.h"
 #import "LatestDic.h"
 #import "CustomURLCache.h"
+#import <BmobSDK/Bmob.h>
 
 
 @interface AppDelegate ()
@@ -60,6 +61,8 @@
 //            }
 //        }
 //    }
+    //设置BmobKey
+    [Bmob registerWithAppKey:@"562ae9e932d6af93d57e0cabcf009a18"];
     return YES;
 }
 

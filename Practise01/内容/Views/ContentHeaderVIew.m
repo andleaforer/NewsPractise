@@ -88,6 +88,13 @@ static NSString *identifier = @"ScrollViewCell";
         [self addTitleLabel];
         //添加pageControl
         [self addPageControl];
+        //DKNight
+        @weakify(self);
+        [self addColorChangedBlock:^{
+            @strongify(self);
+            self.normalBackgroundColor = [UIColor whiteColor];
+            self.nightBackgroundColor = UIColorFromRGB(0x343434);
+        }];
     }
     return self;
 }
@@ -122,6 +129,15 @@ static NSString *identifier = @"ScrollViewCell";
     [titleLabel setBackgroundColor:[UIColor whiteColor]];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel = titleLabel;
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+        self.titleLabel.normalBackgroundColor = [UIColor whiteColor];
+        self.titleLabel.nightBackgroundColor = UIColorFromRGB(0x343434);
+        self.titleLabel.normalTextColor = UIColorFromRGB(0x343434);
+        self.titleLabel.nightTextColor = [UIColor whiteColor];
+    }];
     [self addSubview:titleLabel];
 }
 

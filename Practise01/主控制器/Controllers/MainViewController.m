@@ -28,6 +28,9 @@
 @property (nonatomic, strong) UIView *visibleView;
 //leftView
 @property (nonatomic, strong) UIView *leftView;
+//rightView
+@property (nonatomic, strong) UIView *rightView;
+
 @end
 
 @implementation MainViewController
@@ -39,7 +42,7 @@
     [self addBackground];
     //添加子控制器
     [self addChildControllers];
-    //DKNight
+    
 }
 
 #pragma mark --- addBackground
@@ -65,15 +68,12 @@
     //添加首页子控制器
     HomeViewController *homePageVC = [[HomeViewController alloc] init];
     [self setUpViewController:homePageVC withTitle:@"新闻"];
+    //添加电台子控制器
+    RadioViewController *radioVC = [[RadioViewController alloc] init];
+    [self setUpViewController:radioVC withTitle:@"小说"];
     //添加收藏子控制器
     MarkViewController *markVC = [[MarkViewController alloc] init];
     [self setUpViewController:markVC withTitle:@"收藏"];
-    //添加评论子控制器
-    CommentViewController *commentVC = [[CommentViewController alloc] init];
-    [self setUpViewController:commentVC withTitle:@"评论"];
-    //添加电台子控制器
-    RadioViewController *radioVC = [[RadioViewController alloc] init];
-    [self setUpViewController:radioVC withTitle:@"电台"];
 }
 
 - (void)setUpViewController:(UIViewController *)viewController withTitle:(NSString *)title {
@@ -82,10 +82,10 @@
     [self addChildViewController:nv];
     viewController.navigationItem.title = title;
     //添加左按钮
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonSelector:)];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_infoicon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonSelector:)];
     viewController.navigationItem.leftBarButtonItem = leftButton;
-    //添加右按钮
-//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_infoicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
+//    //添加右按钮
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
 //    viewController.navigationItem.rightBarButtonItem = rightButton;
     //暂时不显示的view隐藏
 //    nv.view.hidden = YES;
@@ -141,14 +141,22 @@
 }
 
 //- (void)rightButtonSelector:(UIBarButtonItem*)sender {
-//    NSLog(@"touch rightButton");
+//    self.popover.contentInset = UIEdgeInsetsMake(20, 5.0, 20, 5.0);
+//    self.popover.backgroundColor = [UIColor greenColor];
+//    
+//    CGPoint startPoint = CGPointMake(CGRectGetMidX(self.rightView.frame), CGRectGetMidY(self.rightView.frame) + 20);
+//    [self.popover showAtPoint:startPoint popoverPostion:DXPopoverPositionDown withContentView:self.rightView inView:self.view];
+//    __weak typeof(self) weakSelf = self;
+//    self.popover.didDismissHandler = ^{
+//        [weakSelf bounceTargetView:sender];
+//    };
 //}
-
-#pragma mark --- addRightMenu 
-
-- (void)addRightMenu {
-    
-}
+//
+//#pragma mark --- addRightMenu 
+//
+//- (void)addRightMenu {
+//    
+//}
 
 #pragma mark - LeftMenuViewControllerDelegate
 - (void)changeViewToTargetController:(NSInteger)index {

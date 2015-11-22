@@ -12,12 +12,15 @@
 #import "Define.h"
 #import "MarkViewController.h"
 
+
 #define TitleScrollViewH 40
 #define TitleLbH 30
 
 @interface HomeViewController () <UIScrollViewDelegate>
 @property (nonatomic, strong) UIScrollView *titleScrollView;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
+//podOver
+@property (nonatomic, strong) DXPopover *popover;
 //新闻数据
 @property (nonatomic, strong) NSArray *demoData;
 @end
@@ -58,6 +61,12 @@ static NSString *identifier = @"Cell";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushMarkViewController) name:@"ChangeToMarkBook" object:nil];
 }
 
+#pragma mark --- addRightMenu
+
+- (void)addRightMenu {
+    
+}
+
 #pragma mark --- pushMarkViewController
 - (void)pushMarkViewController {
     MarkViewController *markVC = [[MarkViewController alloc] init];
@@ -71,6 +80,13 @@ static NSString *identifier = @"Cell";
     [self.titleScrollView setBackgroundColor:[UIColor whiteColor]];
     [self.titleScrollView setShowsVerticalScrollIndicator:NO];
     [self.titleScrollView setShowsHorizontalScrollIndicator:NO];
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+        self.titleScrollView.nightBackgroundColor = UIColorFromRGB(0x343434);
+        self.titleScrollView.normalBackgroundColor = [UIColor whiteColor];
+    }];
     [self.view addSubview:self.titleScrollView];
 }
 
@@ -85,6 +101,13 @@ static NSString *identifier = @"Cell";
 //    self.contentScrollView.directionalLockEnabled = YES;
 //    [self.contentScrollView setContentSize:CGSizeMake(ScreenWidth * self.demoData.count, 0)];
     [self.contentScrollView setPagingEnabled:YES];
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+        self.contentScrollView.normalBackgroundColor = [UIColor whiteColor];
+        self.contentScrollView.nightBackgroundColor = UIColorFromRGB(0x343434);
+    }];
     [self.view addSubview:self.contentScrollView];
 }
 
@@ -97,6 +120,15 @@ static NSString *identifier = @"Cell";
     CGFloat lbY = 0;
     TitleScrollViewLabel *lb;
     for (int i = 0; i < self.demoData.count; i++) {
+        //DKNight
+        @weakify(self);
+        [self addColorChangedBlock:^{
+            @strongify(self);
+            lb.normalBackgroundColor = [UIColor whiteColor];
+            lb.nightBackgroundColor = UIColorFromRGB(0x343434);
+            lb.nightTextColor = [UIColor whiteColor];
+            lb.normalTextColor = UIColorFromRGB(0x343434);
+        }];
         lb = [[TitleScrollViewLabel alloc] initWithFrame:CGRectMake(lbX, lbY, lbW, lbH)];
         [lb setText:self.demoData[i][@"title"]];
         [self.titleScrollView addSubview:lb];

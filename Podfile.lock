@@ -30,6 +30,8 @@ PODS:
   - DKNightVersion/Helper (0.9.0)
   - DKNightVersion/UIKit (0.9.0):
     - DKNightVersion/Core
+  - DXPopover (0.1.1)
+  - MBProgressHUD (0.9.1)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
@@ -37,11 +39,15 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
   - DKNightVersion (~> 0.9.0)
+  - DXPopover (~> 0.1.1)
+  - MBProgressHUD (~> 0.9.1)
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   DKNightVersion: 405d8328b982f751df09d5d6847931a536e472ee
+  DXPopover: 13e6bbd1a0da4e62b2190de51f43a94850769e0f
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
 
 COCOAPODS: 0.39.0

@@ -26,6 +26,15 @@
 }
 
 - (void)setNewsModel:(NewsModel *)newsModel {
+    //DKNight
+    @weakify(self);
+    [self addColorChangedBlock:^{
+        @strongify(self);
+//        cell.normalBackgroundColor = [UIColor whiteColor];
+//        cell.nightBackgroundColor = UIColorFromRGB(0x343434);
+        self.titleLabel.normalTextColor = UIColorFromRGB(0x343434);
+        self.titleLabel.nightTextColor = [UIColor whiteColor];
+    }];
     self.titleLabel.text = newsModel.title;
     self.subtitleLabel.text = newsModel.source;
     [self.imageView sd_setImageWithURL:[NSURL URLWithString:newsModel.imgsrc] placeholderImage:[UIImage imageNamed:@"placeholder"]];
