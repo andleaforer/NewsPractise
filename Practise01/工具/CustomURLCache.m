@@ -32,6 +32,7 @@ static NSTimeInterval const CustomURLCacheExpirationInterval = 240;
         NSDate *cacheExpirationDate = [cacheDate dateByAddingTimeInterval:CustomURLCacheExpirationInterval];
         if ([cacheExpirationDate compare:[NSDate date] ] == NSOrderedAscending) {
             [self removeCachedResponseForRequest:request];
+            NSLog(@"LOG____________移除过期缓存!");
             return nil;
         }
     }
@@ -41,6 +42,11 @@ static NSTimeInterval const CustomURLCacheExpirationInterval = 240;
 - (void)storeCachedResponse:(NSCachedURLResponse *)cachedResponse forRequest:(NSURLRequest *)request {
     NSLog(@"storeCacheResponse");
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:cachedResponse.userInfo];
+    if ([userInfo objectForKey:CustomURLCacheExpirationKey]) {
+        NSLog(@"LOG______________直接返回!");
+        return;
+    }
+    NSLog(@"UserInfo:%@", userInfo);
     userInfo[CustomURLCacheExpirationKey] = [NSDate date];
     NSCachedURLResponse *modifiedCachedResponse = [[NSCachedURLResponse alloc] initWithResponse:cachedResponse.response data:cachedResponse.data userInfo:userInfo storagePolicy:cachedResponse.storagePolicy];
     [super storeCachedResponse:modifiedCachedResponse forRequest:request];
