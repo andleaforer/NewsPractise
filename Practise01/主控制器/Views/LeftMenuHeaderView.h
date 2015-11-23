@@ -12,6 +12,9 @@ typedef void(^LeftMenuBlock)(void);
 
 @interface LeftMenuHeaderView : UIView
 @property (nonatomic, copy) LeftMenuBlock block;
+@property (nonatomic, strong) UIButton *loginButton;
+@property (nonatomic, strong) UILabel *userLabel;
+@property (nonatomic, strong) UILabel *accountLabel;
 
 - (instancetype)initWithFrame:(CGRect)frame;
 

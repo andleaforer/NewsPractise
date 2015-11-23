@@ -19,8 +19,31 @@
         [self addLoginButton];
         //添加底部灰线
         [self addBottomLine];
+        //添加登陆后Label
+        [self addUserLabel];
+        [self addAccountLabel];
     }
     return self;
+}
+
+- (void)addUserLabel {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(22, 100, 156, 22)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    label.text = @"用户:";
+    label.hidden = YES;
+    self.userLabel = label;
+    [self addSubview:label];
+}
+
+- (void)addAccountLabel {
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(22, 122, 156, 22)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor blackColor];
+    self.accountLabel = label;
+    [self addSubview:label];
 }
 
 - (void)addLoginButton {
@@ -31,6 +54,7 @@
     //响应方法
     [loginBTN addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     //添加到父视图中
+    self.loginButton = loginBTN;
     [self addSubview:loginBTN];
 }
 
