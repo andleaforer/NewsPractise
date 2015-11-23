@@ -14,6 +14,7 @@
 #import "DataBaseTool.h"
 #import <CoreData/CoreData.h>
 #import "LoginViewController.h"
+#import "LoginedUser.h"
 
 @interface LeftMenuViewController ()
 //头部视图
@@ -47,6 +48,16 @@ static NSString *identifier = @"Cell";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
     //设置tableView分割线样式:None
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //监听用户登录状态
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeUserLoginStatus:) name:@"UserLoginStatus" object:nil];
+}
+
+- (void)changeUserLoginStatus:(NSNotification *)noti {
+    LoginedUser *Luser = [LoginedUser sharedUser];
+    self.headerView.accountLabel.text = Luser.username;
+    self.headerView.userLabel.hidden = NO;
+    self.headerView.loginButton.imageView.hidden = YES;
+    self.headerView.loginButton.userInteractionEnabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {

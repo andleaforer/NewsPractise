@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterModel.h"
 #import "RegisterViewController.h"
+#import "LoginedUser.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottom;
@@ -87,10 +88,28 @@
 
 - (IBAction)regist:(id)sender {
     RegisterViewController *vc = [[RegisterViewController alloc] init];
+    vc.block = ^{
+        [self dismissViewControllerAnimated:NO completion:nil];
+    };
     [self presentViewController:vc animated:YES completion:nil];
 }
 - (IBAction)login:(id)sender {
-    
+    [LoginedUser loginInbackgroundWithAccount:self.acountTextField.text andPassword:self.passwordTextField.text block:^(BmobUser *user, NSError *error) {
+        if (error) {
+            NSLog(@"LoginError:%@", error);
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"登录失败" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+            [alertView show];
+        } else {
+            LoginedUser *Luser = [LoginedUser sharedUser];
+            Luser.username = user.username;
+            Luser.password = user.password;
+            Luser.login = YES;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"UserLoginStatus" object:nil];
+            });
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 - (IBAction)forgetPWD:(id)sender {
     NSLog(@"忘记密码");

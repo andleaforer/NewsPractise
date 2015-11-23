@@ -84,9 +84,9 @@
     //添加左按钮
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_infoicon"] style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonSelector:)];
     viewController.navigationItem.leftBarButtonItem = leftButton;
-//    //添加右按钮
-//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
-//    viewController.navigationItem.rightBarButtonItem = rightButton;
+    //添加右按钮
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_menuicon"] style:UIBarButtonItemStylePlain target:self action:@selector(rightButtonSelector:)];
+    viewController.navigationItem.rightBarButtonItem = rightButton;
     //暂时不显示的view隐藏
 //    nv.view.hidden = YES;
     if ([title isEqualToString:@"新闻"]) {
@@ -140,23 +140,15 @@
     }];
 }
 
-//- (void)rightButtonSelector:(UIBarButtonItem*)sender {
-//    self.popover.contentInset = UIEdgeInsetsMake(20, 5.0, 20, 5.0);
-//    self.popover.backgroundColor = [UIColor greenColor];
-//    
-//    CGPoint startPoint = CGPointMake(CGRectGetMidX(self.rightView.frame), CGRectGetMidY(self.rightView.frame) + 20);
-//    [self.popover showAtPoint:startPoint popoverPostion:DXPopoverPositionDown withContentView:self.rightView inView:self.view];
-//    __weak typeof(self) weakSelf = self;
-//    self.popover.didDismissHandler = ^{
-//        [weakSelf bounceTargetView:sender];
-//    };
-//}
-//
-//#pragma mark --- addRightMenu 
-//
-//- (void)addRightMenu {
-//    
-//}
+- (void)rightButtonSelector:(UIBarButtonItem*)sender {
+    
+}
+
+#pragma mark --- addRightMenu 
+
+- (void)addRightMenu {
+    
+}
 
 #pragma mark - LeftMenuViewControllerDelegate
 - (void)changeViewToTargetController:(NSInteger)index {

@@ -44,7 +44,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sgT-km-NGY">
                             <rect key="frame" x="40" y="25" width="240" height="31"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-cQ-1qA">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wjx-cQ-1qA">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                     <animations/>
                                     <constraints>
@@ -52,7 +52,7 @@
                                         <constraint firstAttribute="width" constant="240" id="ilJ-qw-4O7"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     <connections>
                                         <action selector="acountTF:" destination="-1" eventType="editingDidEndOnExit" id="H4i-Ke-Oeq"/>
                                     </connections>
@@ -78,7 +78,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-dt-lXY">
                             <rect key="frame" x="40" y="69" width="240" height="31"/>
                             <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xsw-6x-hrY">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xsw-6x-hrY">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="30"/>
                                     <animations/>
                                     <constraints>
@@ -86,7 +86,7 @@
                                         <constraint firstAttribute="height" constant="30" id="fGh-Q4-HOa"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     <connections>
                                         <action selector="pwdTF:" destination="-1" eventType="editingDidEndOnExit" id="C33-pp-7ta"/>
                                     </connections>
@@ -200,7 +200,7 @@
                 <constraint firstAttribute="trailing" secondItem="Mrm-Lu-yeM" secondAttribute="trailing" constant="125" id="y1I-Qn-NKF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="208" y="429"/>
+            <point key="canvasLocation" x="390" y="422"/>
         </view>
     </objects>
     <resources>

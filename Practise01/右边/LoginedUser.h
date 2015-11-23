@@ -9,7 +9,7 @@
 #import <BmobSDK/BmobUser.h>
 
 @interface LoginedUser : BmobUser
-
+@property (nonatomic, assign, getter=isLogin) BOOL login;
 + (instancetype)sharedUser;
 
 @end

@@ -13,6 +13,11 @@
 #import "CustomURLCache.h"
 #import <BmobSDK/Bmob.h>
 
+#pragma ShareSDK
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
 
 @interface AppDelegate ()
 
@@ -23,10 +28,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:[MainViewController new]];
-//    [_window setRootViewController:na];
-//    [_window makeKeyAndVisible];
+
     //设置后台获取网络标识indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     //获取LatestDic
@@ -36,34 +38,45 @@
     //设置共享URLCache
     CustomURLCache *sharedCache = [CustomURLCache standardURLCache];
     [NSURLCache setSharedURLCache:sharedCache];
-    //设置ShareSDK
-//    ShareSDK registerApp:@"c4e0099651f2" activePlatforms:@[@(SSDKPlatformSubTypeQZone), @(SSDKPlatformSubTypeQQFriend), @(SSDKPlatformSubTypeWechatSession), @(SSDKPlatformSubTypeWechatTimeline), @(SSDKPlatformTypeMail)] onImport:nil onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
-//        switch (platformType) {
-//            case SSDKPlatformSubTypeQZone:{
-//                <#statements#>
-//                break;
-//            }
-//            case SSDKPlatformSubTypeQQFriend:{
-//                <#statements#>
-//                break;
-//            }
-//            case SSDKPlatformSubTypeWechatSession:{
-//                <#statements#>
-//                break;
-//            }
-//            case SSDKPlatformSubTypeWechatTimeline:{
-//                <#statements#>
-//                break;
-//            }
-//            case SSDKPlatformTypeMail:{
-//                <#statements#>
-//                break;
-//            }
-//        }
-//    }
     //设置BmobKey
     [Bmob registerWithAppKey:@"562ae9e932d6af93d57e0cabcf009a18"];
+    
+    //设置ShareSDK
+    [ShareSDK registerApp:@"c4e0099651f2"];//字符串api20为您的ShareSDK的AppKey
+    
+    if ([QQApiInterface isQQInstalled]) {
+        NSLog(@"已安装QQ，启用QQ分享");
+        //添加QQ应用  注册网址   http://mobile.qq.com/api/
+        [ShareSDK connectQQWithQZoneAppKey:@"1104910633"
+                         qqApiInterfaceCls:[QQApiInterface class]
+                           tencentOAuthCls:[TencentOAuth class]];
+    }
+    if ([WXApi isWXAppInstalled]) {
+        NSLog(@"已安装微信，启用微信分享");
+        //微信登陆的时候需要初始化
+        [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                               appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+                               wechatCls:[WXApi class]];
+        
+    }
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

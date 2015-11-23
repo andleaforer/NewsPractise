@@ -17,7 +17,13 @@
 #import "DataBaseTool.h"
 #import "AppDelegate.h"
 
-@interface DetailViewController () <UIWebViewDelegate, UIScrollViewDelegate>
+#pragma ShareSDK
+#import <ShareSDK/ShareSDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApi.h"
+
+@interface DetailViewController () <UIWebViewDelegate, UIScrollViewDelegate, ISSContent>
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) ArticleModel *articleModel;
 @end
@@ -85,15 +91,57 @@
     [detailNav addSubview:backBTN];
      */
     //收藏按钮
-    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn1.frame = CGRectMake(0, 0, 33, 33);
+    [btn1 addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    [btn1 setImage:[UIImage imageNamed:@"icon_bottom_star"] forState:UIControlStateNormal];
+    UIBarButtonItem *markBTN = [[UIBarButtonItem alloc] initWithCustomView:btn1];
     //分享按钮
-    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(action)];
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn2.frame = CGRectMake(0, 0, 33, 33);
+    [btn2 addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+    [btn2 setImage:[UIImage imageNamed:@"icon_bottom_share"] forState:UIControlStateNormal];
+    UIBarButtonItem *shareBTN = [[UIBarButtonItem alloc] initWithCustomView:btn2];
     self.navigationItem.rightBarButtonItems = @[shareBTN, markBTN];
     [self.view addSubview:detailNav];
 }
 
-- (void)action {
+- (void)action:(UIButton *)sender {
     NSLog(@"shared!");
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"png"];
+    
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"分享内容"
+                                       defaultContent:@"测试一下"
+                                                image:[ShareSDK imageWithPath:imagePath]
+                                                title:@"ShareSDK"
+                                                  url:@"http://www.mob.com"
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:sender arrowDirect:UIPopoverArrowDirectionUp];
+//    [container setIPhoneContainerWithViewController:sender];
+    
+    
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(@"分享成功");
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                                }
+                            }];
 }
 
 - (void)save {

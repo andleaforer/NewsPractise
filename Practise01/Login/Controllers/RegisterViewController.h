@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController
+typedef void(^DismissBlock)(void);
 
+@interface RegisterViewController : UIViewController
+@property (nonatomic, copy) DismissBlock block;
 @end

@@ -16,6 +16,10 @@
 #import "LatestDic.h"
 #import "Define.h"
 
+@interface DataTool ()<NSURLConnectionDataDelegate>
+
+@end
+
 @implementation DataTool
 
 + (void)getDataWithURL:(NSString *)url parameter:(NSDictionary *)para iDStr:(NSString *)idStr refreshCount:(int)count success:(void (^)(id))success failure:(void (^)(NSError *))failure {
@@ -106,9 +110,6 @@
         }
     }];
 }
-
-
-
 
 
 

@@ -15,6 +15,7 @@ static LoginedUser* user = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         user = [[self alloc] init];
+        user.login = NO;
     });
     return user;
 }

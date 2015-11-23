@@ -37,7 +37,7 @@ static NSString *identifier = @"Cell";
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Model"];
         request.predicate = [NSPredicate predicateWithFormat:@"list = %@", @"Mark"];
         request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"ptime" ascending:YES]];
-        _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContect sectionNameKeyPath:@"ptime" cacheName:@"MarkCache"];
+        _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContect sectionNameKeyPath:@"ptime" cacheName:nil];
         NSError *error = nil;
         if (![_resultsController performFetch:&error]) {
             NSLog(@"PerformFetchError:%@", error.userInfo);
@@ -56,6 +56,7 @@ static NSString *identifier = @"Cell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerNib:[UINib nibWithNibName:@"ContentViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:identifier];
+//    self.tableView.editing = YES;
     [DataBaseTool queryModelWithIDStr:@"Mark"];
 }
 
@@ -78,7 +79,9 @@ static NSString *identifier = @"Cell";
         case NSFetchedResultsChangeInsert:
             [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:YES];
             break;
-            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
         default:
             break;
     }
@@ -89,7 +92,9 @@ static NSString *identifier = @"Cell";
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:YES];
             break;
-            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:YES];
+            break;
         default:
             break;
     }
@@ -134,25 +139,25 @@ static NSString *identifier = @"Cell";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        Model *selectedModel = [self.resultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContect deleteObject:selectedModel];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
 
 /*
 // Override to support rearranging the table view.

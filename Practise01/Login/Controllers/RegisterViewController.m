@@ -36,6 +36,8 @@
     [BmobSMS requestSMSCodeInBackgroundWithPhoneNumber:self.phoneNumber.text andTemplate:nil resultBlock:^(int number, NSError *error) {
         if (error) {
             NSLog(@"SMSRequestError:%@", error.localizedDescription);
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"请输入手机号" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+            [alertView show];
         } else {
             NSLog(@"SMSNumber:%d", number);
         }
@@ -43,15 +45,20 @@
 }
 - (IBAction)regiser:(id)sender {
     //判断账户是否已存在：1.不存在，注册成功，返回yes；2.存在，返回no；
-    LoginedUser *user = [LoginedUser sharedUser];
+    LoginedUser *Luser = [LoginedUser sharedUser];
     [LoginedUser signOrLoginInbackgroundWithMobilePhoneNumber:self.phoneNumber.text SMSCode:self.smsCode.text andPassword:self.password.text block:^(BmobUser *user, NSError *error) {
         if (error) {
             NSLog(@"SignError:%@", error.localizedDescription);
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"信息输入有误" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+            [alertView show];
         } else {
-            user.username = self.phoneNumber.text;
-            user.password = self.password.text;
+            Luser.username = user.username;
+            Luser.password = user.password;
+            Luser.login = YES;
             //跳转主界面
-            [self dismiss:nil];
+            [self dismissViewControllerAnimated:YES completion:^{
+                self.block();
+            }];
         }
     }];
 }
